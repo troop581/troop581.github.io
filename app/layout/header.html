@@ -1,0 +1,21 @@
+﻿<div ng-controller="header as vm">
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="navbar-header">
+            <div class="navbar-brand">
+                <div><i class="fa fa-fw fa-lg fa-file"></i><span class="h4 large"> Outline Agreement Management</span></div>
+            </div>
+        </div>
+        <div class="navbar-text loud" ng-show="vm.location.host().indexOf('dev') > -1">
+            *** DEV ***
+        </div>
+        <div class="navbar-text loud" ng-show="vm.location.host().indexOf('cons') > -1">
+            *** CONS ***
+        </div>
+        <div>
+            <p class="navbar-text navbar-right">
+                <h3 class="pull-right"><span class="small" tooltip="Online Help" tooltip-placement="left"><a href="http://performancesupport3.intel.com/index.php?option=com_content&view=article&id=1&Itemid=114" target="_blank"><i class="fa fa-fw fa-lg fa-question-circle"></i></a></span></h3>
+                <h3 class="pull-right"><span class="small spaceRight" id="currentLogin" data-val="{{vm.data.userId}}">{{vm.data.worker.MailName || (vm.data.userId | lowercase)}}</span></h3>
+            </p>
+        </div>
+    </div>
+</div>

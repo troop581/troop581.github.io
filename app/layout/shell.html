@@ -1,0 +1,19 @@
+﻿<div ng-controller="shell as vm" ng-class="{'prod-warning': vm.checkProdAnalyst()}">
+    <header ng-include="'app/layout/header.html'"></header>
+    <ul class="nav nav-tabs">
+        <li ng-class="{active: vm.isActive('/dashboard')}"><a href="#/dashboard">Dashboard</a></li>
+        <li ng-class="{active: vm.isActive('/search')}"><a href="#/search">OA Search</a></li>
+        <li ng-class="{active: vm.isActive('/oa')}"><a href="#/oa">OA Maintenance</a></li>
+        <li ng-class="{active: vm.isActive('/document')}"><a href="#/document">Quote Upload</a></li>
+        <!--<li ng-class="{active: vm.isActive('/upload')}"><a href="#/upload">Upload</a></li>-->
+        <!--<li ng-class="{active: vm.isActive('/workbench')}"><a href="#/workbench">Workbench</a></li>-->
+        <!--<li ng-class="{active: vm.isActive('/asl')}"><a href="#/asl">Approved Supplier List</a></li>-->
+        <!--<li ng-class="{active: vm.isActive('/supplier')}"><a href="#/supplier">Supplier Ownership</a></li>-->
+        <!--<li ng-class="{active: vm.isActive('/reports')}"><a href="#/reports">Reports</a></li>-->
+        <li class="pull-right"><a href="" ng-click="vm.openSettings()"><i class="fa fa-fw fa-lg fa-cog"></i></a></li>
+        <li class="pull-right"><a ng-href="{{vm.getCmCcmLink()}}" target="_blank">CM/CCM Mapping</a></li>
+        <li class="pull-right"><a ng-href="{{vm.getCeDeviationLink()}}" target="_blank">CE! Deviation</a></li>
+    </ul>
+    <br />
+    <div ng-view></div>
+</div>

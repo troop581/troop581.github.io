@@ -1,0 +1,12 @@
+﻿<div ng-controller="document as vm">
+    <div class="container">
+        <div class="col-lg-12">
+            <div drop-target drop="vm.drop(files)" class="alert alert-info drop-target">
+                <p ng-hide="vm.file && vm.file.name">Drag file here to upload.</p>
+                <p ng-show="vm.file && vm.file.name">{{vm.file && vm.file.name}}</p>
+            </div>
+            <br />
+            <button type="button" ng-disabled="vm.processing || vm.uploaded || !vm.file" class="btn btn-sm btn-wide btn-primary" ng-click="vm.upload()">Upload<span ng-show="vm.processing">ing...</span></button>
+        </div>
+    </div>
+</div>

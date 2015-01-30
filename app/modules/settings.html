@@ -1,0 +1,44 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Personal Settings</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="form-group">
+                    <div class="col-sm-4 text-right field-label"><span tooltip="Your CM Code" tooltip-placement="left">CM</span></div>
+                    <div class="col-sm-8">
+                        <select ng-model="vm.data.settings.cm" ng-options="i as (i.Description+' - '+i.PurGroup) for i in vm.data.purGroup | orderBy:'Description'" ng-change="vm.updateSettings()" class="form-control input-sm">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 text-right field-label"><span tooltip="On entering dashboard tab the first time, pull data automatically." tooltip-placement="left">Auto-pull Dashboard</span></div>
+                    <div class="col-sm-8">
+                        <input type="checkbox" class="checkbox-inline" ng-model="vm.data.settings.autoPull" ng-change="vm.updateSettings()" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 text-right field-label radio-inline"><span>CSI/PSI</span></div>
+                    <div class="col-sm-8">
+                        <label class="radio-inline">
+                            <input name="category" ng-model="vm.data.settings.category" ng-change="vm.updateSettings()" type="radio" value="S044">CSI
+                        </label>&emsp;
+                        <label class="radio-inline">
+                            <input name="category" ng-model="vm.data.settings.category" ng-change="vm.updateSettings()" type="radio" value="S048">PSI
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <p class="text-muted small pull-left">
+        <span class="pull-left">Version</span>
+        <br />
+        <span class="pull-left">{{vm.data.fixedVal.version}}</span>
+    </p>
+    <button class="btn btn-primary" ng-click="vm.close()">Close</button>
+</div>

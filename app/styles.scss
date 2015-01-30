@@ -1,0 +1,437 @@
+﻿/* === Offical Intel Colors ==============================================
+intelBlue:              #0071c5;
+paleBlue:               #7ed3f7;
+lightBlue:				#00aeef;
+darkBlue:               #004280;
+yellow:     	        #ffda00;
+orange:                 #fdb813;
+green:                  #a6ce39;
+red:					#ed1c24;
+lightGrey:              #b1babf;
+grey:                   #939598;
+darkGrey:               #53565a;
+========================================================================== */
+
+$intelBlue:				#0071c5;
+$paleBlue:				#7ed3f7;
+$lightBlue:				#00aeef;
+$darkBlue:              #004280;
+$yellow:     	        #ffda00;
+$orange:                #fdb813;
+$green:                 #a6ce39;
+$red:					#ed1c24;
+$lightGrey:             #b1babf;
+$grey:                  #939598;
+$darkGrey:              #53565a;
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_Rg.woff") format("woff"),url("../content/fonts/IntelClear_WLat_Rg.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_Bd.woff") format("woff"),url("../content/fonts/IntelClear_WLat_Bd.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_It.woff") format("woff"),url("../content/fonts/IntelClear_WLat_It.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_BdIt.woff") format("woff"),url("../content/fonts/IntelClear_WLat_BdIt.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_Lt.woff") format("woff"),url("../content/fonts/IntelClear_WLat_Lt.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'intel-clear';
+    src: url("../content/fonts/IntelClear_WLat_LtIt.woff") format("woff"),url("../content/fonts/IntelClear_WLat_LtIt.ttf") format("truetype");
+    font-weight: 200;
+    font-style: italic;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+body {
+    font-family: 'intel-clear','Open Sans',sans-serif;
+    padding: 0 1em;
+}
+
+table tbody {
+    font-family: 'intel-clear','Open Sans',sans-serif;
+}
+
+table.table table>tbody>tr>td {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+tr.data {
+    height: 22px;
+}
+
+td.tblLeft, th.tblLeft {
+    border-left: .15em solid black!important;
+}
+
+.linesTable td, th {
+    white-space: nowrap;
+}
+
+th {
+    border-bottom: .15em solid black!important;
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'intel-clear','Open Sans',sans-serif;
+	font-weight: 200;
+    margin: 0;
+}
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
+	color: $orange;
+	font-size: .75em;
+}
+
+h3 .small a {
+    color: $orange;
+    font-size: .9em;
+}
+
+.navbar {
+    margin-bottom: .5em;
+}
+
+nav ul {
+    display: inline;
+    max-width: 45%;
+}
+
+.navbar-static-top {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.navbar-inverse {
+    background-color: $intelBlue;
+    border-bottom-width: 3px;
+    border-color: $orange;
+    background-image: -webkit-linear-gradient(top,$intelBlue 0,$darkBlue 100%);
+    background-image: -o-linear-gradient(top,$intelBlue 0,$darkBlue 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from($intelBlue),to($darkBlue));
+    background-image: linear-gradient(to bottom,$intelBlue 0,$darkBlue 100%);
+}
+
+.navbar-inverse .navbar-brand {
+	color: #ffffff;
+}
+
+nav.navbar.navbar-default {
+    background-color: transparent;
+    color: transparent;
+    border: none;
+}
+
+.fa-check {
+    color: $green;
+}
+
+.fa-trash-o {
+    font-size: 1.25em;
+}
+
+button {
+	background-color: $lightGrey;
+	color: #ffffff;
+	border: 1px solid $grey;
+}
+
+button:hover {
+	background-color: $grey
+}
+
+.btn-wide {
+    min-width: 12em;
+}
+
+.btn-primary {
+    background-color: $intelBlue;
+}
+
+.large {
+    font-size: 1.25em;
+}
+
+.highlight {
+    color: $lightBlue;
+}
+
+.hidden {
+    display: none;
+}
+
+.input-group-addon.has-icon {
+    color: #ffffff;
+    background-color: $intelBlue;
+    border-color: $intelBlue;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+}
+
+nav ul li span.badge {
+    background-color: $orange;
+    color: #ffffff;
+    vertical-align: central!important;
+}
+
+#toast-container>.toast {
+    opacity: .90;
+    background-image: none!important;
+    padding-left: 15px;
+    width: 350px;
+}
+
+.toast-info {
+    background-color: $lightBlue;
+}
+
+.toast-title {
+    font-size: larger;
+    font-weight: normal;
+}
+
+.spaceRight {
+    margin-right: 1em;
+}
+
+.nav>li>a.tightLeft {
+    padding-left: 2px;
+}
+
+table.floatThead-table {
+    border-top: none;
+    border-bottom: none;
+    background-color: #FFF;
+}
+
+label {
+	margin-bottom: 0;
+}
+
+.search-criteria .form-group {
+	margin-bottom: .6em;
+	padding-left: 1em;
+	>label:first-child {
+		margin-left: -1em;
+	}
+}
+
+.row hr {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.panel {
+	margin-bottom: .75em;
+}
+
+.panel-heading {
+	padding: 5px 5px 5px 10px;
+}
+
+.page-header {
+	background-color: $intelBlue;
+}
+
+.panel.no-body {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+/* Override bootstrap striping color */ 
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+	background-color: #f6f6f6;
+}
+
+/* Override bootstrap hover color */ 
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+	background-color: #fcf8e3;
+}
+
+/* From bootstrap...fixes 'active' class overridden by custom striping and changes the color*/
+.table>thead>tr>td.active, .table>tbody>tr>td.active, .table>tfoot>tr>td.active, .table>thead>tr>th.active, .table>tbody>tr>th.active, .table>tfoot>tr>th.active, .table>thead>tr.active>td, .table>tbody>tr.active>td, .table>tfoot>tr.active>td, .table>thead>tr.active>th, .table>tbody>tr.active>th, .table>tfoot>tr.active>th {
+    background-color: #fcf8e3;
+}
+
+/* From bootstrap...fixes 'warning' class overridden by custom striping */
+.table>thead>tr>td.warning, .table>tbody>tr>td.warning, .table>tfoot>tr>td.warning, .table>thead>tr>th.warning, .table>tbody>tr>th.warning, .table>tfoot>tr>th.warning, .table>thead>tr.warning>td, .table>tbody>tr.warning>td, .table>tfoot>tr.warning>td, .table>thead>tr.warning>th, .table>tbody>tr.warning>th, .table>tfoot>tr.warning>th {
+    background-color: #fcf8e3;
+}
+
+/* From bootstrap...fixes 'danger' class overridden by custom striping */
+.table>thead>tr>td.danger, .table>tbody>tr>td.danger, .table>tfoot>tr>td.danger, .table>thead>tr>th.danger, .table>tbody>tr>th.danger, .table>tfoot>tr>th.danger, .table>thead>tr.danger>td, .table>tbody>tr.danger>td, .table>tfoot>tr.danger>td, .table>thead>tr.danger>th, .table>tbody>tr.danger>th, .table>tfoot>tr.danger>th {
+    background-color: #f2dede;
+}
+
+/* From bootstrap...fixes 'success' class overridden by custom striping */
+.table>thead>tr>td.success, .table>tbody>tr>td.success, .table>tfoot>tr>td.success, .table>thead>tr>th.success, .table>tbody>tr>th.success, .table>tfoot>tr>th.success, .table>thead>tr.success>td, .table>tbody>tr.success>td, .table>tfoot>tr.success>td, .table>thead>tr.success>th, .table>tbody>tr.success>th, .table>tfoot>tr.success>th {
+    background-color: #dff0d8;
+}
+
+input::-webkit-input-placeholder {
+	color: lighten($lightGrey, 10%);
+}
+
+input:-moz-placeholder { // Firefox 18-
+	color: lighten($lightGrey, 10%);
+}
+
+input::-moz-placeholder {  // Firefox 19+
+	color: lighten($lightGrey, 10%);
+}
+
+input:-ms-input-placeholder {  
+	color: lighten($lightGrey, 10%);
+}
+
+input.icon::-webkit-input-placeholder {
+	font-family: 'FontAwesome';
+	color: lighten($lightGrey, 10%);
+}
+
+input.icon:-moz-placeholder { // Firefox 18-
+	font-family: 'FontAwesome';  
+	color: lighten($lightGrey, 10%);
+}
+
+input.icon::-moz-placeholder {  // Firefox 19+
+	font-family: 'FontAwesome';  
+	color: lighten($lightGrey, 10%);
+}
+
+input.icon:-ms-input-placeholder {  
+	font-family: 'FontAwesome';  
+	color: lighten($lightGrey, 10%);
+}
+
+.field-label {
+	color: $lightBlue;
+}
+
+.inline {
+	display: inline;
+}
+
+.overflow-x {
+	overflow-x: auto;
+}
+
+.oa-table tbody td {
+	max-height: 100px;
+}
+
+.table-striped>tbody>tr.activeLine:nth-child(odd)>td, .table-striped>tbody>tr.activeLine:nth-child(even)>td {
+	background-color: lighten($paleBlue, 20%);
+}
+
+.table-hover>tbody>tr.activeLine:hover>td {
+	background-color: lighten($paleBlue, 15%);
+}
+
+.table.table-condensed {
+    margin-bottom: 0;
+}
+
+.top-buffer {
+	margin-top: .8em;
+}
+
+hr {
+	margin: 15px;
+}
+
+.full {
+	width: 100%;
+}
+
+.col-xs-1.col-xs-1-5 {
+	width: 20%;
+}
+
+.block {
+	display: block;
+}
+
+.btn-group-left {
+    position: relative;
+    left: -2.5em;
+    border-bottom-left-radius: 0;
+    border-top-left-radius:0;
+    border-left: none;
+}
+
+.form-control.ng-invalid {
+    border: 1px solid $red;
+}
+
+.form-control.ng-invalid:focus {
+    border-color: $red;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba($red,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba($red,.6);
+}
+
+.loud {
+    color: $yellow !important;
+    font-weight: bolder !important;
+    font-size: xx-large !important;
+    margin: 0 !important;
+}
+
+.drop-target {
+    border-style: dotted;
+    border-width: thick;
+    margin-bottom: 0;
+}
+
+.prod-warning {
+    border-left: 30px solid $red;
+    border-right: 30px solid $red;
+}
+
+@media (min-width:480px) {
+    .modal-lg {
+        width: 95%;
+        max-width: 1400px;
+    }
+}
+
+.alert {
+    margin-bottom: 0;
+}
