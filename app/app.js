@@ -2,7 +2,7 @@
 
 var app = angular.module('app', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
 
-app.config(['$tooltipProvider', 'ngQuickDateDefaultsProvider', '$routeProvider', '$httpProvider', function ($tooltipProvider, ngQuickDateDefaultsProvider, $routeProvider, $httpProvider) {
+app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($tooltipProvider, $routeProvider, $httpProvider) {
     $tooltipProvider.options({
         popupDelay: 500
     });
