@@ -441,12 +441,17 @@ body {
     font-family: 'Open Sans', 'open-sans', Arial, 'Helvetica Neue', sans-serif;
 }
 
-.navbar-brand {
-    h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
-        font-family: 'Tangerine', 'Brush Script MT';
-        font-weight:700;
-        font-size: 2em;
-        color: $red;
-        margin:0;
-    }
+.logo {
+    font-family: 'Tangerine', 'Brush Script MT';
+    font-weight: 700;
+    font-size: 6em;
+    color: $red;
+}
+
+#watermark-logo {
+    width: 100%;
+    position:absolute;
+    top: 5px;
+    left: 5px;
+    opacity: .1;
 }

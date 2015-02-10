@@ -426,11 +426,17 @@ body {
   padding-top: 0;
   font-family: 'Open Sans', 'open-sans', Arial, 'Helvetica Neue', sans-serif; }
 
-.navbar-brand h1, .navbar-brand h2, .navbar-brand h3, .navbar-brand h4, .navbar-brand h5, .navbar-brand h6, .navbar-brand .h1, .navbar-brand .h2, .navbar-brand .h3, .navbar-brand .h4, .navbar-brand .h5, .navbar-brand .h6 {
+.logo {
   font-family: 'Tangerine', 'Brush Script MT';
   font-weight: 700;
-  font-size: 2em;
-  color: #ed1c24;
-  margin: 0; }
+  font-size: 6em;
+  color: #ed1c24; }
+
+#watermark-logo {
+  width: 100%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  opacity: 0.1; }
 
 /*# sourceMappingURL=styles.css.map */
