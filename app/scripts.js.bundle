@@ -13,17 +13,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/app/app.js</file>
-    <file>/app/modules/asl.js</file>
-    <file>/app/modules/dashboard.js</file>
-    <file>/app/modules/dashboard.mm.js</file>
-    <file>/app/modules/document.js</file>
-    <file>/app/modules/outlineAgreement.js</file>
-    <file>/app/modules/reports.js</file>
-    <file>/app/modules/search.js</file>
-    <file>/app/modules/settings.js</file>
-    <file>/app/modules/supplierOwnership.js</file>
-    <file>/app/modules/upload.js</file>
-    <file>/app/modules/workbench.js</file>
+    <file>/app/modules/flags.js</file>
     <file>/app/layout/header.js</file>
     <file>/app/layout/shell.js</file>
     <file>/app/services/dataService.js</file>
