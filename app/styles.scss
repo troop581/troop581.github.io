@@ -444,14 +444,67 @@ body {
 .logo {
     font-family: 'Tangerine', 'Brush Script MT';
     font-weight: 700;
-    font-size: 6em;
+    font-size: 3em;
     color: $red;
+    text-shadow: .04em .04em .04em #aaa;
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 4em;
+  }
+}
+@media (min-width: 992px) {
+  .logo {
+    font-size: 5em;
+  }
+}
+@media (min-width: 1200px) {
+  .logo {
+    font-size: 6em;
+  }
 }
 
 #watermark-logo {
-    width: 50%;
-    position:absolute;
-    top: -10%;
-    right: -10%;
-    opacity: .08;
+    max-width: 30%;
+    position:fixed;
+    bottom: -10px;
+    right: -10px;
+    opacity: .15;
+    z-index: -1;
+}
+
+.holiday {
+    margin-bottom: 1.5em;
+    .holiday-text {
+        color: navy;
+        margin-bottom: 0;
+        margin-top: 0;
+        text-indent: .5em;
+    }
+    .holiday-date {
+        text-indent: 1.5em;
+        margin-bottom: 0;
+        margin-top: 0;
+        small {
+            color: $red;
+        }
+    }
+}
+
+.title {
+    color: navy;
+}
+
+hr {
+    border-top-color: $red;
+}
+
+.holidays {
+    z-index: -2;
+}
+
+.indent {
+    padding-left: 2em;
+    padding-right: 2em;
 }

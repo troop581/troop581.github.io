@@ -1,8 +1,79 @@
 ﻿<div ng-controller="flags as vm">
     <div class="container">
-        <div class="jumbotron">
-            <h1>Troop 581 - Flag Fundraiser</h1>
-            <p>Something to look forward to in the near future!</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well well-sm holidays">
+                    <h3 class="title text-center">Flag Service Dates</h3>
+                    <hr />
+                    <div class="holiday" ng-repeat="holiday in vm.holidays">
+                        <h4 class="holiday-text">{{holiday.text}}</h4>
+                        <h4 class="holiday-date"><small>{{holiday.date | momentToString:'dddd, MMMM D, YYYY'}}</small></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2>Please help us get to Scout Camp!</h2>
+                        <h4>
+                            <button class="btn btn-sm btn-primary" ng-click="openMap()"><i class="fa fa-fw fa-map-marker"></i> Flag Boundaries</button>
+                            Please make sure you live in the boundaries that we cover.
+                        </h4>
+                        <h3>All of the money collected for this flag subscription goes toward the cost of our Boy Scout summer camp.</h3>
+                        <h3>
+                            For $40, the Boy Scouts from Troop 581 will come to your home on eight holidays to place a flag in your front yard.
+                            The flag will be placed at dawn and removed at dusk.
+                        </h3>
+                        <h4 class="indent">Prior to the first flag holiday, we will come to your home and find a suitable spot in your yard, near the sidewalk, to place a metal sleeve.</h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control input-sm" ng-model="vm.name">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control input-sm" ng-model="vm.address">
+                                <p>Gilbert, AZ</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="text" class="form-control input-sm" placeholder="ex. (480) 555-1234" ng-model="vm.phone">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="DAF5YBSUFZEYU">
+                            <table>
+                                <tr><td><input type="hidden" name="on0" value="Name"></td></tr>
+                                <tr><td><input type="text" name="os0" maxlength="40" ng-model="vm.name" ng-hide="true"></td></tr>
+                                <tr><td><input type="hidden" name="on1" value="Address"></td></tr>
+                                <tr><td><input type="text" name="os1" maxlength="40" ng-model="vm.address" ng-hide="true"></td></tr>
+                                <tr><td><input type="hidden" name="on2" value="Phone"></td></tr>
+                                <tr><td><input type="text" name="os2" maxlength="20" ng-model="vm.phone" ng-hide="true"></td></tr>
+                            </table>
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h5>
+                    For more information about the flag service, to speak with someone about your flag service,
+                    or for more information on joining our troop, please contact Jay Larson at <a href="mailto:rjaylarson@q.com">rjaylarson@q.com</a> or (480) 545-7767.
+                </h5>
+            </div>
         </div>
     </div>
 </div>

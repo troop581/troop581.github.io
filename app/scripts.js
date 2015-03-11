@@ -44,6 +44,36 @@ app.controller('flags', ['dataService', '$q', function (dataService, $q) {
     'use strict';
     var vm = this;
     vm.data = dataService;
+    var year = 2015;
+    var JANUARY = 0, FEBRUARY = 1, MARCH = 2, APRIL = 3, MAY = 4, JUNE = 5, JULY = 6, AUGUST = 7, SEPTEMBER = 8, OCTOBER = 9, NOVEMBER = 10, DECEMBER = 11,
+        SUNDAY = 0, MONDAY = 1, TUESDAY = 2, WEDNESDAY = 3, THURSDAY = 4, FRIDAY = 5, SATURDAY = 6,
+        FIRST = 1, SECOND = 2, THIRD = 3, FOURTH = 4, LAST = -1;
+    vm.holidays = [
+        { text: "Memorial Day", date: getDay(LAST, MONDAY, MAY, year) },
+        { text: "Flag Day", date: moment(year + "-06-14") },
+        { text: "Independence Day", date: moment(year + "-07-04") },
+        { text: "Patriot Day", date: moment(year + "-09-11") },
+        { text: "Columbus Day", date: getDay(SECOND, MONDAY, OCTOBER, year) },
+        { text: "Veterans Day", date: moment(year + "-11-11") },
+        { text: "Martin Luther King, Jr. Day", date: getDay(SECOND, MONDAY, JANUARY, year + 1) },
+        { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
+    ];
+
+    function getDay(position, weekday, month, year) {
+        var date = moment().year(year).month(month).date(1).hours(0).minutes(0).seconds(0).milliseconds(0);
+        if (position === -1) {
+            date.endOf('month').startOf('day');
+            while (date.day() !== weekday) {
+                date.subtract(1, 'day');
+            }
+        } else {
+            date.date((position - 1) * 7 + 1);
+            while (date.day() !== weekday) {
+                date.add(1, 'day');
+            }
+        }
+        return date;
+    }
 
     (function init() {
 
@@ -164,142 +194,13 @@ app.directive('floatThead', function () {
 });
 
 ///#source 1 1 /app/services/filters.js
-/// <reference path="../../scripts/moment.min.js" />
-/// <reference path="../../scripts/angular.min.js" />
-app.filter('alphanumeric', ['$filter', function ($filter) {
-    return function (s) {
-        return s.replace(/[^a-z0-9]/gmi, '');
-    };
-}]);
-
-app.filter('csiPsi', ['$filter', function ($filter) {
-    return function (pOrg) {
-        if (pOrg === 'S044') { return 'CSI'; }
-        if (pOrg === 'S048') { return 'PSI'; }
-        return pOrg;
-    };
-}]);
-
-app.filter('deleted', ['$filter', function ($filter) {
-    return function (c) {
-        switch (c) {
-            case 'X':
-                return '<i class="fa fa-trash-o"></i>';
-            case 'x':
-                return '<i class="fa fa-trash-o"></i>';
-            case 'L':
-                return '<i class="fa fa-trash-o"></i>';
-            case 'l':
-                return '<i class="fa fa-trash-o"></i>';
-            case 'S':
-                return '<i class="fa fa-lock"></i>';
-            case 's':
-                return '<i class="fa fa-lock"></i>';
-            default:
-                return '&nbsp;';
-        }
-    };
-}]);
-
-app.filter('display', ['$filter', '$locale', function ($filter, $locale) {
-    return function (b) {
-        if (!b) {
+app.filter('momentToString', ['$filter', '$locale', function ($filter, $locale) {
+    return function (d, format) {
+        if (!moment.isMoment(d)) {
             return '';
-        }
-        return b;
-    };
-}]);
-
-app.filter('docCategory', ['$filter', function ($filter) {
-    return function (c) {
-        switch (c) {
-            case 'B':
-                return 'PR';
-            case 'F':
-                return 'PO';
-            default:
-                return '';
-        }
-    };
-}]);
-
-app.filter('downloadCmCcm', ['$filter', function ($filter) {
-    return function (o) {
-        return (o.Description + ' - ' + o.PurGroup) || '';
-    };
-}]);
-
-app.filter('downloadExcelDate', ['$filter', function ($filter) {
-    return function (date) {
-        if (!date) return;
-        return Math.floor(25569 + (moment(moment(date) - moment().zone() * 60000).valueOf() / (86400000)));
-    }
-}]);
-
-app.filter('downloadText', ['$filter', function ($filter) {
-    return function (o) {
-        return o.text || '';
-    };
-}]);
-
-app.filter('downloadUom', ['$filter', function ($filter) {
-    return function (o) {
-        return o.uom.value || '';
-    };
-}]);
-
-app.filter('objToArray', ['$filter', function ($filter) {
-    return function (obj) {
-        if (!(obj instanceof Object)) { return obj; }
-        return _.values(obj);
-    };
-}]);
-
-app.filter('parseLongText', ['$filter', function ($filter) {
-    return function (s) {
-        return s.replace(/[|]/gmi, '\n');
-    };
-}]);
-
-app.filter('parseDate', ['$filter', '$locale', function ($filter, $locale) {
-    return function (d) {
-        if (!d) {
-            return '';
-        }
-        var m;
-        if (typeof d === 'string' && d.indexOf('/Date') > -1) {
-            m = moment(moment(d).valueOf() + moment(d).zone() * 60000);
         } else {
-            m = moment(d);
+            return d.format(format);
         }
-        return m.format('YYYY/MM/DD');
-    };
-}]);
-
-app.filter('parseDateString', ['$filter', '$locale', function ($filter, $locale) {
-    return function (d) {
-        if (!d) {
-            return '';
-        }
-        var m;
-        if (typeof d === 'string' && d.indexOf('/Date') > -1) {
-            m = moment(moment(d).valueOf() + moment(d).zone() * 60000);
-        } else {
-            m = moment(d);
-        }
-        return m.format('MM/DD/YYYY');
-    };
-}]);
-
-app.filter('parseTime', ['$filter', '$locale', function ($filter, $locale) {
-    return function (s) {
-        if (!s) {
-            return '';
-        }
-        if (s.match(/PT\d\dH\d\dM\d\dS/)) {
-            return s.substr(2, 2) + ":" + s.substr(5, 2) + ":" + s.substr(8, 2);
-        }
-        return s;
     };
 }]);
 
@@ -315,80 +216,3 @@ app.filter('porgSite', ['$filter', function ($filter) {
     };
 }]);
 
-app.filter('purchOrg', ['$filter', function ($filter) {
-    return function (pOrg) {
-        if (pOrg === 'S044') { return { value: pOrg, text: 'CSI' }; }
-        if (pOrg === 'S048') { return { value: pOrg, text: 'PSI' }; }
-        return { value: pOrg, text: pOrg };
-    };
-}]);
-
-app.filter('releaseStatus', ['$filter', function ($filter) {
-    return function (c) {
-        switch (c) {
-            case 'C':
-                return '<i class="fa fa-check"></i>';
-            case 'R':
-                return '<i class="fa fa-times"></i>';
-            default:
-                return '';
-        }
-    };
-}]);
-
-app.filter('removeZeros', ['$filter', '$locale', function (filter, locale) {
-    return function (numString) {
-        var value = numString + '';
-        while (value.charAt(0) === '0') {
-            value = value.substring(1, value.length);
-        }
-        return value;
-    };
-}]);
-
-app.filter('saveLongText', ['$filter', function ($filter) {
-    return function (s) {
-        return s.replace(/[\n]/gmi, '|');
-    };
-}]);
-
-app.filter('selected', ['$filter', function ($filter) {
-    return function (list) {
-        if (!!list && list.length > 0) {
-            var Selected = _.where(list, { Selected: true });
-            return Selected.length;
-        }
-        return 0;
-    };
-}]);
-
-app.filter('showDash', ['$filter', function ($filter) {
-    return function (value) {
-        if (!value || value === '0') {
-            return '-';
-        }
-        return value;
-    };
-}]);
-
-app.filter('stringDate', ['$filter', '$locale', function (filter, locale) {
-    return function (s) {
-        if (!s) {
-            return '';
-        }
-        var d = new Date(s);
-        return d;
-    };
-}]);
-
-app.filter('toX', ['$filter', function (filter) {
-    return function (b) {
-        return b ? 'X' : '';
-    };
-}]);
-
-app.filter('yesNo', ['$filter', function (filter) {
-    return function (s) {
-        return s ? 'Yes' : 'No';
-    };
-}]);
