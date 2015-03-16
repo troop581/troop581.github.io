@@ -40,7 +40,7 @@ toastr.options = {
     "hideMethod": "hide"
 };
 ///#source 1 1 /app/modules/flags.js
-app.controller('flags', ['dataService', '$q', function (dataService, $q) {
+app.controller('flags', ['dataService', '$q', '$modal', function (dataService, $q, $modal) {
     'use strict';
     var vm = this;
     vm.data = dataService;
@@ -58,6 +58,20 @@ app.controller('flags', ['dataService', '$q', function (dataService, $q) {
         { text: "Martin Luther King, Jr. Day", date: getDay(SECOND, MONDAY, JANUARY, year + 1) },
         { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
     ];
+
+    vm.showBoundaries = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'app/modules/flags.boundaries.html',
+            controller: 'flags.boundaries as vm',
+            size: 'lg'
+        });
+
+        modalInstance.result.then(function () {
+        }, function () {
+
+        });
+    };
+
 
     function getDay(position, weekday, month, year) {
         var date = moment().year(year).month(month).date(1).hours(0).minutes(0).seconds(0).milliseconds(0);
@@ -82,6 +96,22 @@ app.controller('flags', ['dataService', '$q', function (dataService, $q) {
     return vm;
 }]);
 
+
+///#source 1 1 /app/modules/flags.boundaries.js
+app.controller('flags.boundaries', ['dataService', '$modalInstance', '$q', function (data,  $modalInstance, $q) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    vm.close = function () {
+        $modalInstance.close();
+    };
+
+    (function init() {
+    })();
+
+    return vm;
+}]);
 
 ///#source 1 1 /app/layout/header.js
 app.controller('header', ['$location', 'dataService', function ($location, data) {
