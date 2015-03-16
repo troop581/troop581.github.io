@@ -1,17 +1,7 @@
 ﻿<div ng-controller="flags as vm">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="well well-sm holidays">
-                    <h3 class="title text-center">Flag Service Dates</h3>
-                    <hr />
-                    <div class="holiday" ng-repeat="holiday in vm.holidays">
-                        <h4 class="holiday-text">{{holiday.text}}</h4>
-                        <h4 class="holiday-date"><small>{{holiday.date | momentToString:'dddd, MMMM D, YYYY'}}</small></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-8 col-md-push-4">
                 <div class="row">
                     <div class="col-sm-12">
                         <h2>Please help us get to Scout Camp!</h2>
@@ -49,21 +39,51 @@
                     <div class="col-sm-6">
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="DAF5YBSUFZEYU">
-                            <table>
-                                <tr><td><input type="hidden" name="on0" value="Name"></td></tr>
-                                <tr><td><input type="text" name="os0" maxlength="40" ng-model="vm.name" ng-hide="true"></td></tr>
-                                <tr><td><input type="hidden" name="on1" value="Address"></td></tr>
-                                <tr><td><input type="text" name="os1" maxlength="40" ng-model="vm.address" ng-hide="true"></td></tr>
-                                <tr><td><input type="hidden" name="on2" value="Phone"></td></tr>
-                                <tr><td><input type="text" name="os2" maxlength="20" ng-model="vm.phone" ng-hide="true"></td></tr>
-                            </table>
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <input type="hidden" name="hosted_button_id" value="N3ZEDQ7PA4DU8">
+                            <button type="submit" class="btn btn-wide btn-warning">Donate $40</button>
+                        </form>
+                        <hr />
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                        <hr />
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_donations">
+                            <input type="hidden" name="business" value="troop581az@gmail.com">
+                            <input type="hidden" name="lc" value="US">
+                            <input type="hidden" name="item_name" value="2015 Flag Subscription (+ $15 donation)">
+                            <input type="hidden" name="amount" value="65.00">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="no_note" value="0">
+                            <input type="hidden" name="cn" value="Add any special instructions here:">
+                            <input type="hidden" name="no_shipping" value="2">
+                            <input type="hidden" name="rm" value="1">
+                            <input type="hidden" name="return" value="http://troop581.github.io/#/success">
+                            <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
+                            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                         </form>
 
                     </div>
-
+                </div>
+            </div>
+            <div class="row visible-xs-inline">
+                <div class="col-xs-12">
+                    <hr />
+                </div>
+            </div>
+            <div class="col-md-4 col-md-pull-8">
+                <div class="well well-sm holidays">
+                    <h3 class="title text-center">Flag Service Dates</h3>
+                    <hr />
+                    <div class="holiday" ng-repeat="holiday in vm.holidays">
+                        <h4 class="holiday-text">{{holiday.text}}</h4>
+                        <h4 class="holiday-date"><small>{{holiday.date | momentToString:'dddd, MMMM D, YYYY'}}</small></h4>
+                    </div>
                 </div>
             </div>
         </div>
