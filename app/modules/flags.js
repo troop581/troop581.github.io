@@ -1,7 +1,7 @@
-﻿app.controller('flags', ['dataService', '$q', '$modal', function (dataService, $q, $modal) {
+﻿app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $modal) {
     'use strict';
     var vm = this;
-    vm.data = dataService;
+    vm.data = data;
     var year = 2015;
     var JANUARY = 0, FEBRUARY = 1, MARCH = 2, APRIL = 3, MAY = 4, JUNE = 5, JULY = 6, AUGUST = 7, SEPTEMBER = 8, OCTOBER = 9, NOVEMBER = 10, DECEMBER = 11,
         SUNDAY = 0, MONDAY = 1, TUESDAY = 2, WEDNESDAY = 3, THURSDAY = 4, FRIDAY = 5, SATURDAY = 6,
@@ -16,6 +16,48 @@
         { text: "Martin Luther King, Jr. Day", date: getDay(SECOND, MONDAY, JANUARY, year + 1) },
         { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
     ];
+
+    vm.donate = function () {
+        toastr.clear();
+        if (!data.subscribe && !data.donate){
+            toastr.warning('', 'You have not selected the flag service or a donation.', { timeOut: 0 });
+            return;
+        }
+        if (!data.name || !data.address || !data.phone) {
+            toastr.warning('', 'Please fill in all required fields.', { timeOut: 0 });
+            return;
+        }
+        if (!!data.donation && (!_.isFinite(data.donation) || parseFloat(data.donation) < 0)) {
+            toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.", { timeOut: 0 });
+            return;
+        }
+        if (data.subscribe && vm.getTotal() < 40) {
+            toastr.error('', 'An error occurred. Please fix the data and try again.', { timeOut: 0 });
+            return;
+        }
+        if (vm.getTotal() < 5) {
+            toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.', { timeOut: 0 });
+        }
+    };
+
+    vm.getDonation = function () {
+        if (_.isFinite(data.donation)) {
+            return parseFloat(data.donation) < 0 ? 0 : parseFloat(data.donation);
+        } else {
+            return 0;
+        }
+    };
+
+    vm.getTotal = function () {
+        var total = 0;
+        if (data.subscribe) {
+            total = total + 40;
+        }
+        if (data.donate) {
+            total = total + vm.getDonation();
+        }
+        return total;
+    };
 
     vm.showBoundaries = function () {
         var modalInstance = $modal.open({

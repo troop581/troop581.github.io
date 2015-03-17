@@ -2,6 +2,7 @@
     'use strict';
 
     var data = {};
+    data.donationStatus = 'subscribe';
 
     data.init = function () {
         if (data.initialized) return;

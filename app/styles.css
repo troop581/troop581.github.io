@@ -451,7 +451,7 @@ body {
   position: fixed;
   bottom: -10px;
   right: -10px;
-  opacity: 0.15;
+  opacity: 0.1;
   z-index: -1; }
 
 .holiday {
@@ -473,13 +473,15 @@ body {
 
 hr {
   border-top-color: #ed1c24; }
+  hr.footer {
+    margin-bottom: 5px; }
 
 .holidays {
   z-index: -2; }
 
 .indent {
-  padding-left: 2em;
-  padding-right: 2em; }
+  padding-left: 1em;
+  padding-right: 1em; }
 
 .close-top {
   margin-top: 0; }
@@ -493,5 +495,54 @@ hr {
   display: block;
   margin-left: auto;
   margin-right: auto; }
+
+.field-label label {
+  color: #ed1c24;
+  margin-bottom: 0; }
+
+blockquote {
+  margin-bottom: 0; }
+
+.btn-wide {
+  min-width: 12em; }
+
+.btn-lg {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.scout-law {
+  color: #ddd; }
+
+.input-group.narrow {
+  margin-left: 2em;
+  width: 50%; }
+
+#toast-container > .toast {
+  opacity: 0.9;
+  background-image: none !important;
+  padding-left: 15px;
+  width: 350px; }
+
+.toast-info {
+  background-color: #00aeef; }
+
+.toast-title {
+  font-size: larger;
+  font-weight: normal; }
+
+.fa-cc-paypal {
+  color: blue; }
+
+.fa-cc-amex {
+  color: deepskyblue; }
+
+.fa-cc-discover {
+  color: orange; }
+
+.fa-cc-mastercard {
+  color: red; }
+
+.fa-cc-visa {
+  color: darkblue; }
 
 /*# sourceMappingURL=styles.css.map */
