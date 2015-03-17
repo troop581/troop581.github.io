@@ -445,7 +445,7 @@ body {
     font-family: 'Patua One', 'open-sans';
     font-weight: 700;
     font-size: 3em;
-    color: $red;
+    color: red;
     text-shadow: .01em .01em 0 #fff, .03em .03em 0 #aaa;
 }
 
@@ -497,7 +497,7 @@ body {
 .holiday {
     margin-bottom: 1.5em;
     .holiday-text {
-        color: navy;
+        color: mediumblue;
         margin-bottom: 0;
         margin-top: 0;
         text-indent: .5em;
@@ -507,17 +507,17 @@ body {
         margin-bottom: 0;
         margin-top: 0;
         small {
-            color: $red;
+            color: red;
         }
     }
 }
 
 .title {
-    color: navy;
+    color: mediumblue;
 }
 
 hr {
-    border-top-color: $red;
+    border-top-color: red;
     &.footer {
         margin-bottom: 5px;
     }
@@ -550,7 +550,7 @@ hr {
 }
 
 .field-label label {
-	color: $red;
+	color: red;
     margin-bottom: 0;
 }
 
@@ -578,10 +578,6 @@ blockquote {
     padding-left: 15px;
     width: 350px;
     max-width: 95%;
-}
-
-.toast-info {
-    background-color: $lightBlue;
 }
 
 .toast-title {
