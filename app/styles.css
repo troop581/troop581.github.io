@@ -454,6 +454,15 @@ body {
   opacity: 0.1;
   z-index: -1; }
 
+.scout-law {
+  color: #eee;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: -2;
+  max-width: 350px;
+  margin-top: 0; }
+
 .holiday {
   margin-bottom: 1.5em; }
   .holiday .holiday-text {
@@ -510,9 +519,6 @@ blockquote {
   margin-top: 10px;
   margin-bottom: 10px; }
 
-.scout-law {
-  color: #ddd; }
-
 .input-group.narrow {
   margin-left: 2em;
   width: 50%; }
@@ -521,7 +527,8 @@ blockquote {
   opacity: 0.9;
   background-image: none !important;
   padding-left: 15px;
-  width: 350px; }
+  width: 350px;
+  max-width: 95%; }
 
 .toast-info {
   background-color: #00aeef; }

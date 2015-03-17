@@ -482,6 +482,18 @@ body {
     z-index: -1;
 }
 
+.scout-law {
+    color: #eee;
+    position:fixed;
+    top: 5px;
+    right: 5px;
+    z-index: -2;
+    max-width: 350px;
+    margin-top: 0;
+}
+
+
+
 .holiday {
     margin-bottom: 1.5em;
     .holiday-text {
@@ -555,10 +567,6 @@ blockquote {
     margin-bottom: 10px;
 }
 
-.scout-law {
-    color: #ddd;
-}
-
 .input-group.narrow {
     margin-left: 2em;
     width: 50%;
@@ -569,6 +577,7 @@ blockquote {
     background-image: none!important;
     padding-left: 15px;
     width: 350px;
+    max-width: 95%;
 }
 
 .toast-info {
