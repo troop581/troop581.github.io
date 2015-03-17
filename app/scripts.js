@@ -62,15 +62,15 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
     vm.donate = function () {
         toastr.clear();
         if (!data.subscribe && !data.donate){
-            toastr.warning('', 'You have not selected the flag service or a donation.', { timeOut: 0 });
+            toastr.warning('', 'You have not selected the flag service or a donation.');
             return;
         }
         if (!data.name || !data.address || !data.phone) {
-            toastr.warning('', 'Please fill in all required fields.', { timeOut: 0 });
+            toastr.warning('', 'Please fill in all required fields.');
             return;
         }
         if (!!data.donation && (!_.isFinite(data.donation) || parseFloat(data.donation) < 0)) {
-            toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.", { timeOut: 0 });
+            toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.");
             return;
         }
         if (data.subscribe && vm.getTotal() < 40) {
@@ -78,7 +78,7 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
             return;
         }
         if (vm.getTotal() < 5) {
-            toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.', { timeOut: 0 });
+            toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.');
         }
     };
 
