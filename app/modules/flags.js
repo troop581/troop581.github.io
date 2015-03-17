@@ -60,6 +60,7 @@
     };
 
     vm.showBoundaries = function () {
+        toastr.clear();
         var modalInstance = $modal.open({
             templateUrl: 'app/modules/flags.boundaries.html',
             controller: 'flags.boundaries as vm',

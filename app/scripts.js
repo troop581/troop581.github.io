@@ -102,6 +102,7 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
     };
 
     vm.showBoundaries = function () {
+        toastr.clear();
         var modalInstance = $modal.open({
             templateUrl: 'app/modules/flags.boundaries.html',
             controller: 'flags.boundaries as vm',
