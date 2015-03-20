@@ -17,6 +17,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($to
             }
         }
     })
+    .when('/calendar', {
+        templateUrl: 'app/modules/calendar.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .otherwise({ redirectTo: '/flags' });
 }]);
 

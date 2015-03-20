@@ -18,6 +18,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($to
             }
         }
     })
+    .when('/calendar', {
+        templateUrl: 'app/modules/calendar.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .otherwise({ redirectTo: '/flags' });
 }]);
 
@@ -39,6 +47,20 @@ toastr.options = {
     "showMethod": "show",
     "hideMethod": "hide"
 };
+///#source 1 1 /app/modules/calendar.js
+app.controller('calendar', ['dataService', '$q', function (data, $q) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    (function init() {
+
+    })();
+
+    return vm;
+}]);
+
+
 ///#source 1 1 /app/modules/flags.js
 app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $modal) {
     'use strict';

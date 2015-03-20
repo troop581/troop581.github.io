@@ -13,6 +13,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/app/app.js</file>
+    <file>/app/modules/calendar.js</file>
     <file>/app/modules/flags.js</file>
     <file>/app/modules/flags.boundaries.js</file>
     <file>/app/layout/header.js</file>
