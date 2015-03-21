@@ -613,7 +613,7 @@ blockquote {
     display: none!important;
 }
 
-@media screen and (max-device-width: 767) and (orientation: portrait) {
+@media screen and (max-device-width: 767px) and (orientation: portrait) {
     .display-portrait {
         display: block!important;
     }
