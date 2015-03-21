@@ -549,4 +549,16 @@ blockquote {
 .fa-cc-visa {
   color: darkblue; }
 
+.rb-n {
+  white-space: normal !important; }
+
+.display-portrait {
+  display: none !important; }
+
+@media screen and (max-device-width: 767) and (orientation: portrait) {
+  .display-portrait {
+    display: block !important; }
+  .display-landscape {
+    display: none !important; } }
+
 /*# sourceMappingURL=styles.css.map */
