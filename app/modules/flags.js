@@ -1,4 +1,4 @@
-﻿app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (data, $q, $modal, $timeout) {
+﻿app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
     'use strict';
     var vm = this;
     vm.data = data;
