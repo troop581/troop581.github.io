@@ -47,6 +47,10 @@
         }, 500);
     };
 
+    vm.getAmount = function () {
+        return '39.99';
+    };
+
     vm.getDescription = function () {
         return '2015 Flags';
     };
@@ -68,10 +72,6 @@
             total = total + vm.getDonation();
         }
         return total;
-    };
-
-    vm.getValue = function () {
-        return '39.99';
     };
 
     vm.showBoundaries = function () {

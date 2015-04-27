@@ -111,6 +111,10 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
         }, 500);
     };
 
+    vm.getAmount = function () {
+        return '39.99';
+    };
+
     vm.getDescription = function () {
         return '2015 Flags';
     };
@@ -132,10 +136,6 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
             total = total + vm.getDonation();
         }
         return total;
-    };
-
-    vm.getValue = function () {
-        return '39.99';
     };
 
     vm.showBoundaries = function () {
