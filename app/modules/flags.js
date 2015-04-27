@@ -77,7 +77,7 @@
         if (data.values.subscribe) {
             desc += '2015 Flag Subscription';
             if (data.values.donate && data.values.donation) {
-                desc += 'and Donation of ' + $filter('currency')(data.values.donation, '$', 2);
+                desc += ' and Donation of ' + $filter('currency')(data.values.donation, '$', 2);
             }
         } else if (data.values.donate && data.values.donation) {
             desc += 'Donation of ' + $filter('currency')(data.values.donation, '$', 2);
