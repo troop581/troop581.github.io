@@ -21,34 +21,38 @@
         toastr.clear();
         if (!data.subscribe && !data.donate) {
             toastr.warning('', 'You have not selected the flag service or a donation.');
+            e.preventDefault();
             return;
         }
         if (!!data.donate && !data.donation) {
             toastr.warning('', 'You selected to give a donation but did not enter an amount.');
+            e.preventDefault();
             return;
         }
         if (!data.name || !data.address || !data.phone) {
             toastr.warning('', 'Please fill in all required fields.');
+            e.preventDefault();
             return;
         }
         if (!!data.donation && (!_.isFinite(data.donation) || parseFloat(data.donation) < 0)) {
             toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.");
+            e.preventDefault();
             return;
         }
         if (data.subscribe && vm.getTotal() < 40) {
             toastr.error('', 'An error occurred. Please fix the data and try again.', { timeOut: 0 });
+            e.preventDefault();
             return;
         }
         if (vm.getTotal() < 5) {
             toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.');
+            e.preventDefault();
             return;
         }
-        toastr.info('', 'Processing donation...', { timeOut: 0 });
-        //$timeout(function () {
-        //    var formElement = angular.element(e.target);
-        //    formElement.attr("action", "https://www.paypal.com/cgi-bin/webscr");
-        //    formElement.submit();
-        //}, 500);
+        toastr.info('', 'You will now be sent to PayPal to finish the transaction.', { timeOut: 0 });
+        $timeout(function () {
+
+        }, 5000);
     };
 
     vm.getAmount = function () {
