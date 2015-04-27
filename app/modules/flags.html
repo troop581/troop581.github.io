@@ -93,7 +93,23 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-lg btn-wide btn-success img-center" ng-click="vm.donate()">Donate via PayPal</button>
+
+                        <form ng-submit="vm.donate($event)" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_donations">
+                            <input type="hidden" name="business" value="troop581az@gmail.com">
+                            <input type="hidden" name="lc" value="US">
+                            <input type="hidden" name="item_name" value="{{vm.getDescription}}">
+                            <input type="hidden" name="amount" value="{{vm.getAmount}}">
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="hidden" name="no_note" value="0">
+                            <input type="hidden" name="cn" value="Add any special instructions here:">
+                            <input type="hidden" name="no_shipping" value="2">
+                            <input type="hidden" name="rm" value="1">
+                            <input type="hidden" name="return" value="http://troop581.github.io/#/success">
+                            <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
+                            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+                            <button type="submit" class="btn btn-lg btn-wide btn-success img-center" ng-click="vm.donate()">Donate via PayPal</button>
+                        </form>
                         <div class="text-center"><i class="fa fa-3x fa-cc-paypal"></i> <i class="fa fa-3x fa-cc-amex"></i> <i class="fa fa-3x fa-cc-discover"></i> <i class="fa fa-3x fa-cc-mastercard"></i> <i class="fa fa-3x fa-cc-visa"></i></div>
                         <div>* If you pay by credit card, please consider donating a couple extra dollars to help us cover the credit card charge. Bank transfers through PayPal do not cost us anything.</div>
                     </div>

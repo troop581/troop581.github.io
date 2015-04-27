@@ -62,7 +62,7 @@ app.controller('calendar', ['dataService', '$q', function (data, $q) {
 
 
 ///#source 1 1 /app/modules/flags.js
-app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $modal) {
+app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (data, $q, $modal, $timeout) {
     'use strict';
     var vm = this;
     vm.data = data;
@@ -81,9 +81,9 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
         { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
     ];
 
-    vm.donate = function () {
+    vm.donate = function (e) {
         toastr.clear();
-        if (!data.subscribe && !data.donate){
+        if (!data.subscribe && !data.donate) {
             toastr.warning('', 'You have not selected the flag service or a donation.');
             return;
         }
@@ -101,7 +101,18 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
         }
         if (vm.getTotal() < 5) {
             toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.');
+            return;
         }
+        toastr.info('', 'Processing donation...', { timeOut: 0 });
+        $timeout(function () {
+            var formElement = angular.element(e.target);
+            formElement.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+            formElement.submit();
+        }, 500);
+    };
+
+    vm.getDescription = function () {
+        return '2015 Flags';
     };
 
     vm.getDonation = function () {
@@ -123,6 +134,10 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
         return total;
     };
 
+    vm.getValue = function () {
+        return '39.99';
+    };
+
     vm.showBoundaries = function () {
         toastr.clear();
         var modalInstance = $modal.open({
@@ -136,7 +151,6 @@ app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $mod
 
         });
     };
-
 
     function getDay(position, weekday, month, year) {
         var date = moment().year(year).month(month).date(1).hours(0).minutes(0).seconds(0).milliseconds(0);
@@ -219,6 +233,12 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
 
     var data = {};
     data.donationStatus = 'subscribe';
+
+    data.processDonation = function (url) {
+        return $http.get(url).then(function (r) {
+            return r;
+        });
+    };
 
     data.init = function () {
         if (data.initialized) return;

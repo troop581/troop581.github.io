@@ -1,4 +1,4 @@
-﻿app.controller('flags', ['dataService', '$q', '$modal', function (data, $q, $modal) {
+﻿app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (data, $q, $modal, $timeout) {
     'use strict';
     var vm = this;
     vm.data = data;
@@ -17,9 +17,9 @@
         { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
     ];
 
-    vm.donate = function () {
+    vm.donate = function (e) {
         toastr.clear();
-        if (!data.subscribe && !data.donate){
+        if (!data.subscribe && !data.donate) {
             toastr.warning('', 'You have not selected the flag service or a donation.');
             return;
         }
@@ -37,7 +37,18 @@
         }
         if (vm.getTotal() < 5) {
             toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.');
+            return;
         }
+        toastr.info('', 'Processing donation...', { timeOut: 0 });
+        $timeout(function () {
+            var formElement = angular.element(e.target);
+            formElement.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+            formElement.submit();
+        }, 500);
+    };
+
+    vm.getDescription = function () {
+        return '2015 Flags';
     };
 
     vm.getDonation = function () {
@@ -59,6 +70,10 @@
         return total;
     };
 
+    vm.getValue = function () {
+        return '39.99';
+    };
+
     vm.showBoundaries = function () {
         toastr.clear();
         var modalInstance = $modal.open({
@@ -72,7 +87,6 @@
 
         });
     };
-
 
     function getDay(position, weekday, month, year) {
         var date = moment().year(year).month(month).date(1).hours(0).minutes(0).seconds(0).milliseconds(0);
