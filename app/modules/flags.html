@@ -25,49 +25,49 @@
                         <form>
                             <div class="form-group field-label">
                                 <label>Name *</label>
-                                <input type="text" class="form-control input-sm" ng-model="vm.data.name">
+                                <input type="text" class="form-control input-sm" ng-model="vm.data.values.name" ng-blur="vm.autosave()">
                             </div>
                             <div class="form-group field-label">
                                 <label>Street Address *</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control input-sm" ng-model="vm.data.address">
+                                    <input type="text" class="form-control input-sm" ng-model="vm.data.values.address" ng-blur="vm.autosave()">
                                     <span class="input-group-addon">Gilbert, AZ</span>
                                 </div>
                             </div>
                             <div class="form-group field-label">
                                 <label>Phone Number *</label>
-                                <input type="text" class="form-control input-sm" ng-model="vm.data.phone">
+                                <input type="text" class="form-control input-sm" ng-model="vm.data.values.phone" ng-blur="vm.autosave()">
                             </div>
                             <div class="form-group field-label">
                                 <label>Email</label>
-                                <input type="text" class="form-control input-sm" ng-model="vm.data.email">
+                                <input type="text" class="form-control input-sm" ng-model="vm.data.values.email" ng-blur="vm.autosave()">
                             </div>
                             <div class="form-group field-label">
                                 <label>Any Special Instructions?</label>
-                                <textarea maxlength="255" class="form-control input-sm" ng-model="vm.data.instructions"></textarea>
+                                <textarea maxlength="255" class="form-control input-sm" ng-model="vm.data.values.instructions" ng-blur="vm.autosave()"></textarea>
                             </div>
                         </form>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="checkbox-inline">
-                                <input ng-model="vm.data.subscribe" type="checkbox"><span class="h4">I would like a flag subscription for Memorial Day 2015 through Presidents' Day 2016</span>
-                                <span ng-show="!!vm.data.subscribe"><small><em>Thank you!!</em></small></span>
+                                <input ng-model="vm.data.values.subscribe" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like a flag subscription for Memorial Day 2015 through Presidents' Day 2016</span>
+                                <span ng-show="!!vm.data.values.subscribe"><small><em>Thank you!!</em></small></span>
                             </label>
                         </div>
                         <div class="form-group">
                             <label class="checkbox-inline">
-                                <input ng-model="vm.data.donate" type="checkbox"><span class="h4">I would like to give a donation.</span>
-                                <span ng-show="!!vm.data.donate"><small><em>Thank you!!</em></small></span>
+                                <input ng-model="vm.data.values.donate" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like to give a donation.</span>
+                                <span ng-show="!!vm.data.values.donate"><small><em>Thank you!!</em></small></span>
                             </label>
                             <div class="input-group narrow">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" class="form-control input-sm text-right" ng-model="vm.data.donation" ng-disabled="!vm.data.donate">
+                                <input type="text" class="form-control input-sm text-right" ng-model="vm.data.values.donation" ng-blur="vm.autosave()" ng-disabled="!vm.data.values.donate">
                                 <span class="input-group-addon">.00</span>
                             </div>
                         </div>
                         <div class="well well-sm">
-                            <div class="row" ng-show="vm.data.subscribe">
+                            <div class="row" ng-show="vm.data.values.subscribe">
                                 <div class="col-xs-9">
                                     2015 Flag Subscription
                                 </div>
@@ -75,7 +75,7 @@
                                     $40.00
                                 </div>
                             </div>
-                            <div class="row" ng-show="vm.data.donate">
+                            <div class="row" ng-show="vm.data.values.donate">
                                 <div class="col-xs-9">
                                     Donation <small><em>Thank you!!</em></small>
                                 </div>
@@ -83,7 +83,7 @@
                                     {{vm.getDonation() | currency}}
                                 </div>
                             </div>
-                            <br ng-show="vm.data.subscribe || vm.data.donate" />
+                            <br ng-show="vm.data.values.subscribe || vm.data.values.donate" />
                             <div class="row">
                                 <div class="col-xs-9">
                                     <strong>Total</strong>
@@ -107,44 +107,17 @@
                             <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
                             <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
                             <input type="hidden" name="on0" value="Name">
-                            <input type="hidden" name="os0" maxlength="200" value="{{vm.data.name}}">
+                            <input type="hidden" name="os0" maxlength="200" value="{{vm.data.values.name}}">
                             <input type="hidden" name="on1" value="Address">
-                            <input type="hidden" name="os1" maxlength="200" value="{{vm.data.address}}">
+                            <input type="hidden" name="os1" maxlength="200" value="{{vm.data.values.address}}">
                             <input type="hidden" name="on2" value="Phone">
-                            <input type="hidden" name="os2" maxlength="200" value="{{vm.data.phone}}">
+                            <input type="hidden" name="os2" maxlength="200" value="{{vm.data.values.phone}}">
                             <input type="hidden" name="on3" value="Email">
-                            <input type="hidden" name="os3" maxlength="200" value="{{vm.data.email}}">
+                            <input type="hidden" name="os3" maxlength="200" value="{{vm.data.values.email}}">
                             <input type="hidden" name="on4" value="Instructions">
-                            <input type="hidden" name="os4" maxlength="200" value="{{vm.data.instructions}}">
+                            <input type="hidden" name="os4" maxlength="200" value="{{vm.data.values.instructions}}">
                             <button type="submit" class="btn btn-lg btn-wide btn-success img-center">Donate via PayPal</button>
                         </form>
-
-                        <!--<form ng-submit="vm.donate($event)" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_xclick">
-                            <input type="hidden" name="business" value="troop581az@gmail.com">
-                            <input type="hidden" name="lc" value="US">
-                            <input type="hidden" name="item_name" value="{{vm.getDescription()}}">
-                            <input type="hidden" name="amount" value="{{vm.getAmount()}}">
-                            <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="button_subtype" value="services">
-                            <input type="hidden" name="no_note" value="1">
-                            <input type="hidden" name="no_shipping" value="2">
-                            <input type="hidden" name="rm" value="1">
-                            <input type="hidden" name="return" value="http://troop581.github.io/#/success">
-                            <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
-                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
-                            <input type="hidden" name="on0" value="Name">
-                            <input type="hidden" name="os0" maxlength="200" value="{{vm.data.name}}">
-                            <input type="hidden" name="on1" value="Address">
-                            <input type="hidden" name="os1" maxlength="200" value="{{vm.data.address}}">
-                            <input type="hidden" name="on2" value="Phone">
-                            <input type="hidden" name="os2" maxlength="200" value="{{vm.data.phone}}">
-                            <input type="hidden" name="on3" value="Email">
-                            <input type="hidden" name="os3" maxlength="200" value="{{vm.data.email}}">
-                            <input type="hidden" name="on4" value="Instructions">
-                            <input type="hidden" name="os4" maxlength="200" value="{{vm.data.instructions}}">
-                            <button type="submit" class="btn btn-lg btn-wide btn-success img-center">Donate via PayPal</button>
-                        </form>-->
                         <div class="text-center"><i class="fa fa-3x fa-cc-paypal"></i> <i class="fa fa-3x fa-cc-amex"></i> <i class="fa fa-3x fa-cc-discover"></i> <i class="fa fa-3x fa-cc-mastercard"></i> <i class="fa fa-3x fa-cc-visa"></i></div>
                         <div>* If you pay by credit card, please consider donating a couple extra dollars to help us cover the credit card charge. Bank transfers through PayPal do not cost us anything.</div>
                     </div>

@@ -2,7 +2,7 @@
     'use strict';
 
     var data = {};
-    data.donationStatus = 'subscribe';
+    data.values = {};
 
     data.processDonation = function (url) {
         return $http.get(url).then(function (r) {

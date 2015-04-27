@@ -81,29 +81,33 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
         { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, year + 1) }
     ];
 
+    vm.autosave = function () {
+        localStorage.setItem('flags.values', JSON.stringify(data.values));
+    };
+
     vm.donate = function (e) {
         toastr.clear();
-        if (!data.subscribe && !data.donate) {
+        if (!data.values.subscribe && !data.values.donate) {
             toastr.warning('', 'You have not selected the flag service or a donation.');
             e.preventDefault();
             return;
         }
-        if (!!data.donate && !data.donation) {
+        if (!!data.values.donate && !data.values.donation) {
             toastr.warning('', 'You selected to give a donation but did not enter an amount.');
             e.preventDefault();
             return;
         }
-        if (!data.name || !data.address || !data.phone) {
+        if (!data.values.name || !data.values.address || !data.values.phone) {
             toastr.warning('', 'Please fill in all required fields.');
             e.preventDefault();
             return;
         }
-        if (!!data.donation && (!_.isFinite(data.donation) || parseFloat(data.donation) < 0)) {
+        if (!!data.values.donation && (!_.isFinite(data.values.donation) || parseFloat(data.values.donation) < 0)) {
             toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.");
             e.preventDefault();
             return;
         }
-        if (data.subscribe && vm.getTotal() < 40) {
+        if (data.values.subscribe && vm.getTotal() < 40) {
             toastr.error('', 'An error occurred. Please fix the data and try again.', { timeOut: 0 });
             e.preventDefault();
             return;
@@ -128,8 +132,8 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
     };
 
     vm.getDonation = function () {
-        if (_.isFinite(data.donation)) {
-            return parseFloat(data.donation) < 0 ? 0 : parseFloat(data.donation);
+        if (_.isFinite(data.values.donation)) {
+            return parseFloat(data.values.donation) < 0 ? 0 : parseFloat(data.values.donation);
         } else {
             return 0;
         }
@@ -137,10 +141,10 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
 
     vm.getTotal = function () {
         var total = 0;
-        if (data.subscribe) {
+        if (data.values.subscribe) {
             total = total + 40;
         }
-        if (data.donate) {
+        if (data.values.donate) {
             total = total + vm.getDonation();
         }
         return total;
@@ -177,7 +181,7 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
     }
 
     (function init() {
-
+        data.values = JSON.parse(localStorage.getItem('flags.values')) || {};
     })();
 
     return vm;
@@ -240,7 +244,7 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
     'use strict';
 
     var data = {};
-    data.donationStatus = 'subscribe';
+    data.values = {};
 
     data.processDonation = function (url) {
         return $http.get(url).then(function (r) {
