@@ -108,11 +108,11 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', function (da
             return;
         }
         toastr.info('', 'Processing donation...', { timeOut: 0 });
-        $timeout(function () {
-            var formElement = angular.element(e.target);
-            formElement.attr("action", "https://www.paypal.com/cgi-bin/webscr");
-            formElement.submit();
-        }, 500);
+        //$timeout(function () {
+        //    var formElement = angular.element(e.target);
+        //    formElement.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+        //    formElement.submit();
+        //}, 500);
     };
 
     vm.getAmount = function () {
