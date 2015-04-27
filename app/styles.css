@@ -534,6 +534,9 @@ blockquote {
   font-size: larger;
   font-weight: normal; }
 
+.toast-info {
+  background-color: #00aeef; }
+
 .fa-cc-paypal {
   color: blue; }
 

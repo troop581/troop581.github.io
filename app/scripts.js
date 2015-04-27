@@ -97,11 +97,6 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
             e.preventDefault();
             return;
         }
-        if (!data.values.name || !data.values.address || !data.values.phone) {
-            toastr.warning('', 'Please fill in all required fields.');
-            e.preventDefault();
-            return;
-        }
         if (!!data.values.donation && (!_.isFinite(data.values.donation) || parseFloat(data.values.donation) < 0)) {
             toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.");
             e.preventDefault();
@@ -114,6 +109,11 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
         }
         if (vm.getTotal() < 5) {
             toastr.warning('', '$5.00 is the minimum amount we can process through PayPal.');
+            e.preventDefault();
+            return;
+        }
+        if (!data.values.name || !data.values.address || !data.values.phone) {
+            toastr.warning('', 'Please fill in all required fields.');
             e.preventDefault();
             return;
         }
