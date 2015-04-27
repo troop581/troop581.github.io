@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group field-label">
                                 <label>Phone Number *</label>
-                                <input type="text" class="form-control input-sm" placeholder="ex. 480-555-1234" ng-model="vm.data.phone">
+                                <input type="text" class="form-control input-sm" ng-model="vm.data.phone">
                             </div>
                             <div class="form-group field-label">
                                 <label>Email</label>
@@ -93,22 +93,31 @@
                                 </div>
                             </div>
                         </div>
-
                         <form ng-submit="vm.donate($event)" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_donations">
+                            <input type="hidden" name="cmd" value="_xclick">
                             <input type="hidden" name="business" value="troop581az@gmail.com">
                             <input type="hidden" name="lc" value="US">
                             <input type="hidden" name="item_name" value="{{vm.getDescription()}}">
                             <input type="hidden" name="amount" value="{{vm.getAmount()}}">
                             <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="no_note" value="0">
-                            <input type="hidden" name="cn" value="Add any special instructions here:">
+                            <input type="hidden" name="button_subtype" value="services">
+                            <input type="hidden" name="no_note" value="1">
                             <input type="hidden" name="no_shipping" value="2">
                             <input type="hidden" name="rm" value="1">
                             <input type="hidden" name="return" value="http://troop581.github.io/#/success">
                             <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
-                            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
-                            <button type="submit" class="btn btn-lg btn-wide btn-success img-center" ng-click="vm.donate()">Donate via PayPal</button>
+                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+                            <input type="hidden" name="on0" value="Name">
+                            <input type="hidden" name="os0" maxlength="200" value="{{vm.data.name}}">
+                            <input type="hidden" name="on1" value="Address">
+                            <input type="hidden" name="os1" maxlength="200" value="{{vm.data.address}}">
+                            <input type="hidden" name="on2" value="Phone">
+                            <input type="hidden" name="os2" maxlength="200" value="{{vm.data.phone}}">
+                            <input type="hidden" name="on3" value="Email">
+                            <input type="hidden" name="os3" maxlength="200" value="{{vm.data.email}}">
+                            <input type="hidden" name="on4" value="Instructions">
+                            <input type="hidden" name="os4" maxlength="200" value="{{vm.data.instructions}}">
+                            <button type="submit" class="btn btn-lg btn-wide btn-success img-center">Donate via PayPal</button>
                         </form>
                         <div class="text-center"><i class="fa fa-3x fa-cc-paypal"></i> <i class="fa fa-3x fa-cc-amex"></i> <i class="fa fa-3x fa-cc-discover"></i> <i class="fa fa-3x fa-cc-mastercard"></i> <i class="fa fa-3x fa-cc-visa"></i></div>
                         <div>* If you pay by credit card, please consider donating a couple extra dollars to help us cover the credit card charge. Bank transfers through PayPal do not cost us anything.</div>
@@ -135,8 +144,10 @@
             <div class="col-xs-12">
                 <hr class="footer"/>
                 <h5>
-                    For more information about the flag service, to speak with someone about your flag service,
-                    or for more information on joining our troop, please contact Jay Larson at <a href="mailto:rjaylarson@q.com">rjaylarson@q.com</a> or (480) 545-7767.
+                    For more information about the flag service,
+                    to speak with someone about your flag service,
+                    or for more information on joining our troop,
+                    please <a href="mailto:troop581az@gmail.com">SEND US AN EMAIL</a>.
                 </h5>
             </div>
         </div>
