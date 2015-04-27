@@ -23,6 +23,9 @@
             toastr.warning('', 'You have not selected the flag service or a donation.');
             return;
         }
+        if (!!data.donate && !data.donate) {
+            toastr.warning('', 'You selected to give a donation but did not enter an amount.');
+        }
         if (!data.name || !data.address || !data.phone) {
             toastr.warning('', 'Please fill in all required fields.');
             return;
