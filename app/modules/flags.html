@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group">
                             <label class="checkbox-inline">
-                                <input ng-model="vm.data.values.donate" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like to give a donation.</span>
+                                <input ng-model="vm.data.values.donate" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like to give a<span ng-show="vm.data.values.subscribe">n additional</span> donation.</span>
                                 <span ng-show="!!vm.data.values.donate"><small><em>Thank you!!</em></small></span>
                             </label>
                             <div class="input-group narrow">
