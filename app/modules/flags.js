@@ -60,11 +60,29 @@
     };
 
     vm.getAmount = function () {
-        return '39.99';
+        var amount = 0;
+        if (data.values.subscribe) {
+            amount += 40;
+            if (data.values.donate && data.values.donation) {
+                amount += parseFloat(data.values.donation);
+            }
+        } else if (data.values.donate && data.values.donation) {
+            amount += parseFloat(data.values.donation);
+        }
+        return amount;
     };
 
     vm.getDescription = function () {
-        return '2015 Flags';
+        var desc = '';
+        if (data.values.subscribe) {
+            desc += '2015 Flag Subscription';
+            if (data.values.donate && data.values.donation) {
+                desc += 'and Donation of ' + $filter('currency')(data.values.donation, '$', 2);
+            }
+        } else if (data.values.donate && data.values.donation) {
+            desc += 'Donation of ' + $filter('currency')(data.values.donation, '$', 2);
+        }
+        return desc;
     };
 
     vm.getDonation = function () {
