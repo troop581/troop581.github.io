@@ -18,6 +18,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($to
             }
         }
     })
+    .when('/success', {
+        templateUrl: 'app/modules/success.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .when('/calendar', {
         templateUrl: 'app/modules/calendar.html',
         resolve: {
@@ -200,6 +208,19 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
 
     (function init() {
         data.values = JSON.parse(localStorage.getItem('flags.values')) || {};
+    })();
+
+    return vm;
+}]);
+
+
+///#source 1 1 /app/modules/success.js
+app.controller('success', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    (function init() {
     })();
 
     return vm;

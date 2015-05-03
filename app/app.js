@@ -17,6 +17,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($to
             }
         }
     })
+    .when('/success', {
+        templateUrl: 'app/modules/success.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .when('/calendar', {
         templateUrl: 'app/modules/calendar.html',
         resolve: {

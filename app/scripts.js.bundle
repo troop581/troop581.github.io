@@ -15,6 +15,7 @@
     <file>/app/app.js</file>
     <file>/app/modules/calendar.js</file>
     <file>/app/modules/flags.js</file>
+    <file>/app/modules/success.js</file>
     <file>/app/modules/flags.boundaries.js</file>
     <file>/app/layout/header.js</file>
     <file>/app/layout/shell.js</file>
