@@ -28,7 +28,7 @@
                                 <input type="text" class="form-control input-sm" ng-model="vm.data.values.name" ng-blur="vm.autosave()">
                             </div>
                             <div class="form-group field-label">
-                                <label>Street Address *</label>
+                                <label>Street Address<span ng-show="vm.data.values.subscribe"> *</span></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control input-sm" ng-model="vm.data.values.address" ng-blur="vm.autosave()">
                                     <span class="input-group-addon">Gilbert, AZ</span>
@@ -90,7 +90,7 @@
                             <input type="hidden" name="currency_code" value="USD">
                             <input type="hidden" name="no_note" value="0">
                             <input type="hidden" name="cn" value="Add any special instructions here:">
-                            <input type="hidden" name="no_shipping" value="2">
+                            <input type="hidden" name="no_shipping" value="1">
                             <input type="hidden" name="rm" value="1">
                             <input type="hidden" name="return" value="http://troop581.github.io/#/success">
                             <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">

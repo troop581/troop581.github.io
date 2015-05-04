@@ -48,7 +48,7 @@
             e.preventDefault();
             return;
         }
-        if (!data.values.name || !data.values.address) {
+        if (!data.values.name || !(data.values.address || !data.values.subscribe)) {
             toastr.warning('', 'Please fill in all required fields.');
             e.preventDefault();
             return;
