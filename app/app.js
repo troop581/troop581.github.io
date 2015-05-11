@@ -17,6 +17,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
             }
         }
     })
+    .when('/flyer', {
+        templateUrl: 'app/modules/flyer.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .when('/success', {
         templateUrl: 'app/modules/success.html',
         resolve: {
