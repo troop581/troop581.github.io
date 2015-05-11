@@ -2,11 +2,12 @@
 
 var app = angular.module('app', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
 
-app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', function ($tooltipProvider, $routeProvider, $httpProvider) {
+app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationProvider', function ($tooltipProvider, $routeProvider, $httpProvider, $locationProvider) {
     $tooltipProvider.options({
         popupDelay: 500
     });
 
+    $locationProvider.html5Mode(true);
     $httpProvider.defaults.withCredentials = true;
 
     $routeProvider.when('/flags', {
