@@ -447,9 +447,10 @@ body {
     font-size: 3em;
     color: red;
     text-shadow: .01em .01em 0 #fff, .03em .03em 0 #aaa;
-    small.logo {
-        font-size: .75em;
-    }
+}
+
+.logo small {
+    font-size: .25em;
 }
 
 @media (min-width: 768px) {

@@ -432,8 +432,9 @@ body {
   font-size: 3em;
   color: red;
   text-shadow: 0.01em 0.01em 0 #fff, 0.03em 0.03em 0 #aaa; }
-  .logo small.logo {
-    font-size: 0.75em; }
+
+.logo small {
+  font-size: 0.25em; }
 
 @media (min-width: 768px) {
   .logo {
