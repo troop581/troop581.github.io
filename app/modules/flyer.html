@@ -53,54 +53,25 @@
                         </form>
                     </div>
                     <div class="col-xs-6">
-                        <div class="well well-sm">
-                            <div class="row" ng-show="vm.data.values.subscribe">
-                                <div class="col-xs-9">
-                                    2015 Flag Subscription
-                                </div>
-                                <div class="col-xs-3 text-right pull-right">
-                                    $40.00
-                                </div>
-                            </div>
-                            <div class="row" ng-show="vm.data.values.donate">
-                                <div class="col-xs-9">
-                                    Donation <small><em>Thank you!!</em></small>
-                                </div>
-                                <div class="col-xs-3 text-right pull-right">
-                                    {{vm.getDonation() | currency}}
-                                </div>
-                            </div>
-                            <br ng-show="vm.data.values.subscribe || vm.data.values.donate" />
+                        <div class="well well-sm text-center">
                             <div class="row">
-                                <div class="col-xs-9">
-                                    <strong>Total</strong>
+                                <div class="col-xs-12">
+                                    Please make checks payable to
                                 </div>
-                                <div class="col-xs-3 text-right pull-right">
-                                    <strong>{{vm.getTotal() | currency}}</strong>
+                                <div class="col-xs-12">
+                                    <strong>BSA Troop 581</strong>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <em>Thank you for your support!</em>
                                 </div>
                             </div>
                         </div>
-                        <form ng-submit="vm.donate($event)" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_donations">
-                            <input type="hidden" name="business" value="troop581az@gmail.com">
-                            <input type="hidden" name="lc" value="US">
-                            <input type="hidden" name="item_name" value="{{vm.data.values.name}}, {{vm.data.values.address}} - {{vm.getDescription()}}">
-                            <input type="hidden" name="amount" value="{{vm.getAmount()}}">
-                            <input type="hidden" name="currency_code" value="USD">
-                            <input type="hidden" name="no_note" value="0">
-                            <input type="hidden" name="cn" value="Add any special instructions here:">
-                            <input type="hidden" name="no_shipping" value="1">
-                            <input type="hidden" name="rm" value="1">
-                            <input type="hidden" name="return" value="http://troop581.github.io/#/success">
-                            <input type="hidden" name="cancel_return" value="http://troop581.github.io/#/flags">
-                            <!--<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">-->
-                            <!--<input type="hidden" name="name" value="{{vm.data.values.name}}">
-                            <input type="hidden" name="address" value="{{vm.data.values.address}}">
-                            <input type="hidden" name="phone" value="{{vm.data.values.phone}}">
-                            <input type="hidden" name="email" value="{{vm.data.values.email}}">
-                            <input type="hidden" name="instructions" value="{{vm.data.values.instructions}}">-->
-                            <button type="submit" class="btn btn-lg btn-wide btn-success img-center">Donate via PayPal</button>
-                        </form>
+                        <br />
+                        <br />
                         <div class="text-center"><i class="fa fa-3x fa-cc-paypal"></i> <i class="fa fa-3x fa-cc-amex"></i> <i class="fa fa-3x fa-cc-discover"></i> <i class="fa fa-3x fa-cc-mastercard"></i> <i class="fa fa-3x fa-cc-visa"></i></div>
                     </div>
                 </div>
