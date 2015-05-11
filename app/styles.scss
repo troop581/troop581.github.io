@@ -482,6 +482,15 @@ body {
     z-index: -1;
 }
 
+@media print {
+    #watermark-logo {
+        display: none;
+    }
+    .scout-law {
+        display: none;
+    }
+}
+
 .scout-law {
     color: #eee;
     position:fixed;
