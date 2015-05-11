@@ -432,26 +432,26 @@ body {
   font-size: 3em;
   color: red;
   text-shadow: 0.01em 0.01em 0 #fff, 0.03em 0.03em 0 #aaa; }
-  .logo small {
+  .logo small.logo {
     font-size: 0.75em; }
 
 @media (min-width: 768px) {
   .logo {
     font-size: 4em;
     text-shadow: 0.01em 0.01em 0 #fff, 0.01em 0.02em 0 #aaa, 0.01em 6px 1px rgba(0, 0, 0, 0.1), 0.01em 0 5px rgba(0, 0, 0, 0.1), 0.01em 1px 3px rgba(0, 0, 0, 0.3), 0.01em 2px 5px rgba(0, 0, 0, 0.2), 0.01em 3px 6px rgba(0, 0, 0, 0.25), 0.01em 4px 6px rgba(0, 0, 0, 0.2), 0.01em 5px 7px rgba(0, 0, 0, 0.15); }
-    .logo small {
+    .logo small.logo {
       font-size: 1em; } }
 
 @media (min-width: 992px) {
   .logo {
     font-size: 5em; }
-    .logo small {
+    .logo small.logo {
       font-size: 1.25em; } }
 
 @media (min-width: 1200px) {
   .logo {
     font-size: 6em; }
-    .logo small {
+    .logo small.logo {
       font-size: 1.5em; } }
 
 #watermark-logo {
