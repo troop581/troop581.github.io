@@ -8,7 +8,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
         popupDelay: 500
     });
 
-    $locationProvider.html5Mode({ enabled: true, requireBase: false });
+    $locationProvider.html5Mode(true);
     $httpProvider.defaults.withCredentials = true;
 
     $routeProvider.when('/flags', {
