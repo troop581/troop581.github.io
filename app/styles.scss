@@ -486,12 +486,31 @@ body {
     z-index: -1;
 }
 
+.fundraiser {
+    display: none;
+}
+
 @media print {
     #watermark-logo {
         display: none;
     }
     .scout-law {
         display: none;
+    }
+    .logo {
+        font-weight: 700;
+        font-size: 3em;
+        color: red;
+        text-shadow: none;
+    }
+    .logo small {
+        font-size: .5em;
+    }
+    .fundraiser {
+        display: block;
+    }
+    .holiday-text {
+        font-weight: 700;
     }
 }
 
@@ -509,6 +528,7 @@ body {
 
 .holiday {
     margin-bottom: 1.5em;
+    margin-top: 1.5em;
     .holiday-text {
         color: mediumblue;
         margin-bottom: 0;

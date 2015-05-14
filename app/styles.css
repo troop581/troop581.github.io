@@ -439,15 +439,18 @@ body {
 @media (min-width: 768px) {
   .logo {
     font-size: 4em;
-    text-shadow: 0.01em 0.01em 0 #fff, 0.01em 0.02em 0 #aaa, 0.01em 6px 1px rgba(0, 0, 0, 0.1), 0.01em 0 5px rgba(0, 0, 0, 0.1), 0.01em 1px 3px rgba(0, 0, 0, 0.3), 0.01em 2px 5px rgba(0, 0, 0, 0.2), 0.01em 3px 6px rgba(0, 0, 0, 0.25), 0.01em 4px 6px rgba(0, 0, 0, 0.2), 0.01em 5px 7px rgba(0, 0, 0, 0.15); } }
+    text-shadow: 0.01em 0.01em 0 #fff, 0.01em 0.02em 0 #aaa, 0.01em 6px 1px rgba(0, 0, 0, 0.1), 0.01em 0 5px rgba(0, 0, 0, 0.1), 0.01em 1px 3px rgba(0, 0, 0, 0.3), 0.01em 2px 5px rgba(0, 0, 0, 0.2), 0.01em 3px 6px rgba(0, 0, 0, 0.25), 0.01em 4px 6px rgba(0, 0, 0, 0.2), 0.01em 5px 7px rgba(0, 0, 0, 0.15); }
+ }
 
 @media (min-width: 992px) {
   .logo {
-    font-size: 5em; } }
+    font-size: 5em; }
+ }
 
 @media (min-width: 1200px) {
   .logo {
-    font-size: 6em; } }
+    font-size: 6em; }
+ }
 
 #watermark-logo {
   max-width: 30%;
@@ -457,11 +460,31 @@ body {
   opacity: 0.1;
   z-index: -1; }
 
+.fundraiser {
+  display: none; }
+
 @media print {
   #watermark-logo {
     display: none; }
+
   .scout-law {
-    display: none; } }
+    display: none; }
+
+  .logo {
+    font-weight: 700;
+    font-size: 3em;
+    color: red;
+    text-shadow: none; }
+
+  .logo small {
+    font-size: 0.5em; }
+
+  .fundraiser {
+    display: block; }
+
+  .holiday-text {
+    font-weight: 700; }
+ }
 
 .scout-law {
   color: #eee;
@@ -473,7 +496,8 @@ body {
   margin-top: 0; }
 
 .holiday {
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+  margin-top: 1.5em; }
   .holiday .holiday-text {
     color: mediumblue;
     margin-bottom: 0;
@@ -507,7 +531,8 @@ hr {
 @media (min-width: 480px) {
   .modal-lg {
     width: 95%;
-    max-width: 1200px; } }
+    max-width: 1200px; }
+ }
 
 .img-center {
   display: block;
@@ -570,7 +595,9 @@ blockquote {
 @media screen and (max-device-width: 767px) and (orientation: portrait) {
   .display-portrait {
     display: block !important; }
+
   .display-landscape {
-    display: none !important; } }
+    display: none !important; }
+ }
 
 /*# sourceMappingURL=styles.css.map */
