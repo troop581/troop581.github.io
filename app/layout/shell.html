@@ -1,14 +1,4 @@
 ﻿<div ng-controller="shell as vm">
-    <div ng-controller="header as vm">
-        <img src="../../content/images/troop581.jpg" id="watermark-logo" />
-        <h3 class="pull-right text-right scout-law">Trustworthy &bull;&nbsp;Loyal &bull;&nbsp;Helpful &bull;&nbsp;Friendly &bull;&nbsp;Courteous &bull;&nbsp;Kind &bull;&nbsp;Obedient &bull;&nbsp;Cheerful &bull;&nbsp;Thrifty &bull;&nbsp;Brave &bull;&nbsp;Clean &bull;&nbsp;Reverent</h3>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <span class="logo"><small>www.</small>Troop 581<small> .us</small><span class="pull-right fundraiser">Flag Service Fundraiser</span></span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div ng-include="'header.html'"></div>
     <div ng-view></div>
 </div>
