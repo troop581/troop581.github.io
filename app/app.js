@@ -41,6 +41,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
             }
         }
     })
+    .when('/requirements', {
+        templateUrl: 'app/modules/requirements.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .otherwise({ redirectTo: '/flags' });
 }]);
 

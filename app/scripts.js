@@ -1,4 +1,3 @@
-﻿///#source 1 1 /app/app.js
 'use strict';
 
 var app = angular.module('app', ['ngRoute', 'ngSanitize', 'ui.bootstrap']);
@@ -42,6 +41,14 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
             }
         }
     })
+    .when('/requirements', {
+        templateUrl: 'app/modules/requirements.html',
+        resolve: {
+            dataService: function (dataService) {
+                return dataService.init();
+            }
+        }
+    })
     .otherwise({ redirectTo: '/flags' });
 }]);
 
@@ -63,7 +70,39 @@ toastr.options = {
     "showMethod": "show",
     "hideMethod": "hide"
 };
-///#source 1 1 /app/modules/calendar.js
+app.controller('header', ['$location', 'dataService', function ($location, data) {
+    'use strict';
+    var vm = this;
+
+    vm.data = data;
+    vm.location = $location;
+
+    return vm;
+}]);
+app.controller('shell', ['$location', '$modal', 'dataService', function ($location, $modal, data) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    vm.isActive = function (url) {
+        return url === $location.path().substr(0, url.length);
+    };
+
+    vm.openSettings = function () {
+        var modalInstance = $modal.open({
+            templateUrl: 'app/modules/settings.html',
+            controller: 'settings as vm'
+        });
+
+        modalInstance.result.then(function () {
+        }, function () {
+        });
+    };
+
+    return vm;
+}]);
+
+
 app.controller('calendar', ['dataService', '$q', function (data, $q) {
     'use strict';
     var vm = this;
@@ -77,7 +116,21 @@ app.controller('calendar', ['dataService', '$q', function (data, $q) {
 }]);
 
 
-///#source 1 1 /app/modules/flags.js
+app.controller('flags.boundaries', ['dataService', '$modalInstance', '$q', function (data,  $modalInstance, $q) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    vm.close = function () {
+        $modalInstance.close();
+    };
+
+    (function init() {
+    })();
+
+    return vm;
+}]);
+
 app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
     'use strict';
     var vm = this;
@@ -222,7 +275,6 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
 }]);
 
 
-///#source 1 1 /app/modules/flyer.js
 app.controller('flyer', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
     'use strict';
     var vm = this;
@@ -367,7 +419,27 @@ app.controller('flyer', ['dataService', '$q', '$modal', '$timeout', '$filter', f
 }]);
 
 
-///#source 1 1 /app/modules/success.js
+app.controller('requirements', ['dataService', '$q', function (data, $q) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    vm.meritBadgeList = [];
+
+    function getMeritBadges() {
+        return data.getWebpage('meritbadge.org/wiki/index.php/Merit_Badges').then(function (webpage) {
+            console.log('got merit badges...hopefully');
+        });
+    }
+
+    (function init() {
+        getMeritBadges();
+    })();
+
+    return vm;
+}]);
+
+
 app.controller('success', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
     'use strict';
     var vm = this;
@@ -380,63 +452,18 @@ app.controller('success', ['dataService', '$q', '$modal', '$timeout', '$filter',
 }]);
 
 
-///#source 1 1 /app/modules/flags.boundaries.js
-app.controller('flags.boundaries', ['dataService', '$modalInstance', '$q', function (data,  $modalInstance, $q) {
-    'use strict';
-    var vm = this;
-    vm.data = data;
-
-    vm.close = function () {
-        $modalInstance.close();
-    };
-
-    (function init() {
-    })();
-
-    return vm;
-}]);
-
-///#source 1 1 /app/layout/header.js
-app.controller('header', ['$location', 'dataService', function ($location, data) {
-    'use strict';
-    var vm = this;
-
-    vm.data = data;
-    vm.location = $location;
-
-    return vm;
-}]);
-///#source 1 1 /app/layout/shell.js
-app.controller('shell', ['$location', '$modal', 'dataService', function ($location, $modal, data) {
-    'use strict';
-    var vm = this;
-    vm.data = data;
-
-    vm.isActive = function (url) {
-        return url === $location.path().substr(0, url.length);
-    };
-
-    vm.openSettings = function () {
-        var modalInstance = $modal.open({
-            templateUrl: 'app/modules/settings.html',
-            controller: 'settings as vm'
-        });
-
-        modalInstance.result.then(function () {
-        }, function () {
-        });
-    };
-
-    return vm;
-}]);
-
-
-///#source 1 1 /app/services/dataService.js
 app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, $q) {
     'use strict';
 
     var data = {};
     data.values = {};
+    data.active = true;
+
+    data.getWebpage = function (url) {
+        return $http.get(url).then(function (r) {
+            return r;
+        });
+    }
 
     data.processDonation = function (url) {
         return $http.get(url).then(function (r) {
@@ -450,7 +477,6 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
 
     return data;
 }]);
-///#source 1 1 /app/services/directives.js
 'use strict';
 
 app.directive('dropTarget', function ($q) {
@@ -513,7 +539,6 @@ app.directive('floatThead', function () {
     }
 });
 
-///#source 1 1 /app/services/filters.js
 app.filter('momentToString', ['$filter', '$locale', function ($filter, $locale) {
     return function (d, format) {
         if (!moment.isMoment(d)) {
@@ -535,4 +560,3 @@ app.filter('porgSite', ['$filter', function ($filter) {
         return output;
     };
 }]);
-

@@ -1,0 +1,19 @@
+[
+  {
+    "outputFileName": "app/scripts.js",
+    "inputFiles": [
+      "app/app.js",
+      "app/layout/header.js",
+      "app/layout/shell.js",
+      "app/modules/calendar.js",
+      "app/modules/flags.boundaries.js",
+      "app/modules/flags.js",
+      "app/modules/flyer.js",
+      "app/modules/requirements.js",
+      "app/modules/success.js",
+      "app/services/dataService.js",
+      "app/services/directives.js",
+      "app/services/filters.js"
+    ]
+  }
+]
