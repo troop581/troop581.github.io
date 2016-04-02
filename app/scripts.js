@@ -419,6 +419,27 @@ app.controller('flyer', ['dataService', '$q', '$modal', '$timeout', '$filter', f
 }]);
 
 
+app.controller('requirements', ['dataService', '$q', function (data, $q) {
+    'use strict';
+    var vm = this;
+    vm.data = data;
+
+    vm.meritBadgeList = [];
+
+    function getMeritBadges() {
+        return data.getWebpage('meritbadge.org/wiki/index.php/Merit_Badges').then(function (webpage) {
+            console.log('got merit badges...hopefully');
+        });
+    }
+
+    (function init() {
+        getMeritBadges();
+    })();
+
+    return vm;
+}]);
+
+
 app.controller('success', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
     'use strict';
     var vm = this;
