@@ -3,6 +3,13 @@
 
     var data = {};
     data.values = {};
+    data.active = true;
+
+    data.getWebpage = function (url) {
+        return $http.get(url).then(function (r) {
+            return r;
+        });
+    }
 
     data.processDonation = function (url) {
         return $http.get(url).then(function (r) {
