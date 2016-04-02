@@ -427,7 +427,7 @@ app.controller('requirements', ['dataService', '$q', function (data, $q) {
     vm.meritBadgeList = [];
 
     function getMeritBadges() {
-        return data.getWebpage('meritbadge.org/wiki/index.php/Merit_Badges').then(function (webpage) {
+        return data.getWebpage('meritbadge.org/wiki/index.php/Merit_Badges', 'ol').then(function (webpage) {
             console.log('got merit badges...hopefully');
         });
     }
