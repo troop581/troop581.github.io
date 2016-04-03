@@ -414,7 +414,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
 
     (function init() {
         if (!data.processingRequirements && _.isEmpty(data.meritBadges) && _.isEmpty(data.ranks)) {
-            getMeritBadges();
+            vm.refresh();
         }
     })();
 
