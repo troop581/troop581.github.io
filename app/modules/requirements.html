@@ -1,17 +1,42 @@
 ﻿<div ng-controller="requirements as vm">
     <div class="container">
-        <div ng-if="vm.data.processingRequirements" class="text-center text-primary">
-            <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-if="vm.data.processingRequirements" class="text-center text-primary">
+                    <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
+                </div>
+                <br />
+                <button class="btn btn-primary" ng-if="!vm.data.processingRequirements" ng-click="vm.refresh()">Refresh Requirements</button>
+                <br />
+            </div>
         </div>
-        <br />
-        <button class="btn btn-sm btn-primary" ng-if="!vm.data.processingRequirements" ng-click="vm.refresh()">Refresh Requirements</button>
-        <br />
-        <br />
-        <div class="text-center center-block">
-            <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name'" ng-if="badge.ready" class="badge-wrapper">
-                    <img ng-src="{{badge.imgUrl}}" class="clickable img-rounded img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
-                    <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
-            </span>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="text-primary">Ranks</h3>
+                <div class="text-center center-block">
+                    <span ng-repeat="badge in vm.data.ranks | objToArray | orderBy:'order'" ng-if="badge.ready" class="badge-wrapper">
+                        <img ng-src="{{badge.imgUrl}}" class="clickable img-rounded img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
+                        <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
+                    </span>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="text-primary">Merit Badges</h3>
+                <div class="text-center center-block">
+                    <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name'" ng-if="badge.ready" class="badge-wrapper">
+                        <img ng-src="{{badge.imgUrl}}" class="clickable img-circle img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
+                        <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h4>Data pulled from MeritBadge.org. Thank you!</h4>
+            </div>
         </div>
     </div>
 </div>

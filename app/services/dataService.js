@@ -56,6 +56,7 @@
 
 
     data.init = function () {
+        data.ranks = JSON.parse(localStorage.getItem('ranks')) || {};
         data.meritBadges = JSON.parse(localStorage.getItem('meritBadges')) || {};
     };
 

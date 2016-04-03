@@ -442,7 +442,6 @@ body {
   height: 11em; }
   .badge-wrapper img {
     height: 6em;
-    width: 6em;
     margin-bottom: .8em; }
 
 @media (min-width: 768px) {
@@ -454,7 +453,6 @@ body {
     height: 12em; }
     .badge-wrapper img {
       height: 7em;
-      width: 7em;
       margin-bottom: .9em; } }
 
 @media (min-width: 992px) {
@@ -465,7 +463,6 @@ body {
     height: 14em; }
     .badge-wrapper img {
       height: 8em;
-      width: 8em;
       margin-bottom: 1em; } }
 
 @media (min-width: 1200px) {
@@ -476,7 +473,6 @@ body {
     height: 16em; }
     .badge-wrapper img {
       height: 9em;
-      width: 9em;
       margin-bottom: 1.1em; } }
 
 #watermark-logo {
