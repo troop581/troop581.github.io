@@ -154,17 +154,17 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
             e.preventDefault();
             return;
         }
-        if (!!data.values.donate && !data.values.donation) {
+        if (data.values.donate && !data.values.donation) {
             toastr.warning('', 'You selected to give a donation but did not enter an amount.');
             e.preventDefault();
             return;
         }
-        if (!!data.values.donation && (!_.isFinite(data.values.donation) || parseFloat(data.values.donation) < 0)) {
+        if (data.values.donation && (!_.toNumber(data.values.donation) || parseInt(data.values.donation, 10) < 0)) {
             toastr.warning('', "Please check your donation amount. It doesn't appear to be correct.");
             e.preventDefault();
             return;
         }
-        if (data.values.subscribe && vm.getTotal() < 40) {
+        if (data.values.subscribe && vm.getTotal() < data.cost) {
             toastr.error('', 'An error occurred. Please fix the data and try again.', { timeOut: 0 });
             e.preventDefault();
             return;
@@ -185,23 +185,23 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
         }, 5000);
     };
 
-    vm.getAmount = function () {
-        var amount = 0;
-        if (data.values.subscribe) {
-            amount += 40;
-            if (data.values.donate && data.values.donation) {
-                amount += parseFloat(data.values.donation);
-            }
-        } else if (data.values.donate && data.values.donation) {
-            amount += parseFloat(data.values.donation);
-        }
-        return amount;
-    };
+    //vm.getAmount = function () {
+    //    var amount = 0;
+    //    if (data.values.subscribe) {
+    //        amount += data.cost;
+    //        if (data.values.donate && data.values.donation) {
+    //            amount += parseInt(data.values.donation, 10);
+    //        }
+    //    } else if (data.values.donate && data.values.donation) {
+    //        amount += parseInt(data.values.donation, 10);
+    //    }
+    //    return amount;
+    //};
 
     vm.getDescription = function () {
         var desc = '';
         if (data.values.subscribe) {
-            desc += '2015 Flag Subscription';
+            desc += data.year + ' Flag Subscription';
             if (data.values.donate && data.values.donation) {
                 desc += ' and Donation of ' + $filter('currency')(data.values.donation, '$', 2);
             }
@@ -212,8 +212,8 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
     };
 
     vm.getDonation = function () {
-        if (_.isFinite(data.values.donation)) {
-            return parseFloat(data.values.donation) < 0 ? 0 : parseFloat(data.values.donation);
+        if (_.toNumber(data.values.donation)) {
+            return parseInt(data.values.donation, 10) < 0 ? 0 : parseInt(data.values.donation, 10);
         } else {
             return 0;
         }
@@ -222,7 +222,7 @@ app.controller('flags', ['dataService', '$q', '$modal', '$timeout', '$filter', f
     vm.getTotal = function () {
         var total = 0;
         if (data.values.subscribe) {
-            total = total + 40;
+            total = total + data.cost;
         }
         if (data.values.donate) {
             total = total + vm.getDonation();
@@ -402,6 +402,7 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
 
     var data = {};
     data.year = 2016;
+    data.cost = 45;
     data.meritBadges = {}
     data.values = {};
 
@@ -419,7 +420,6 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
     { text: "Martin Luther King, Jr. Day", date: getDay(THIRD, MONDAY, JANUARY, data.year + 1), dateNoYear: 'Third Monday in January' },
     { text: "Presidents' Day", date: getDay(THIRD, MONDAY, FEBRUARY, data.year + 1), dateNoYear: 'Third Monday in February' }
     ];
-
 
     data.getWebpage = function (url, selector, format) {
         return $http.get("https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20data.html.cssselect%20WHERE%20url%3D'" + encodeURI(url) + "'%20AND%20css%3D'" + selector + "'&format=" + format + "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", { withCredentials: false }).then(function (r) {

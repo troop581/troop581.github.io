@@ -6,12 +6,12 @@
                     <div class="col-sm-12">
                         <h2 class="close-top">Please help us get to Scout Camp!</h2>
                         <h4>
-                            <button class="btn btn-sm btn-primary" ng-click="vm.showBoundaries()"><i class="fa fa-fw fa-map-marker"></i> Flag Boundaries</button>
+                            <button class="btn btn-sm btn-primary" ng-click="vm.showBoundaries()">Flag Boundaries</button>
                             Please make sure you live in the boundaries that we cover.
                         </h4>
                         <h3>All of the money collected for this flag subscription goes toward the cost of our Boy Scout summer camp.</h3>
                         <h3>
-                            For $40, the Boy Scouts from Troop 581 will come to your home on eight holidays <span class="visible-xs-inline visible-sm-inline"><small>(see dates below)</small></span> to place a flag in your front yard.
+                            For ${{vm.data.cost}} the Boy Scouts from Troop 581 will come to your home on eight holidays <span class="visible-xs-inline visible-sm-inline"><small>(see dates below)</small></span> to place a flag in your front yard.
                             The flag will be placed at dawn and removed at dusk.
                         </h3>
                         <blockquote>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="checkbox-inline">
-                                    <input ng-model="vm.data.values.subscribe" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like a flag subscription for Memorial Day 2015 through Presidents' Day 2016</span>
+                                    <input ng-model="vm.data.values.subscribe" type="checkbox" ng-blur="vm.autosave()"><span class="h4">I would like a flag subscription for Memorial Day {{vm.data.year}} through Presidents' Day {{vm.data.year + 1}}</span>
                                     <span ng-show="!!vm.data.values.subscribe"><small><em>Thank you!!</em></small></span>
                                 </label>
                             </div>
@@ -57,10 +57,10 @@
                         <div class="well well-sm">
                             <div class="row" ng-show="vm.data.values.subscribe">
                                 <div class="col-xs-9">
-                                    2015 Flag Subscription
+                                    {{vm.data.year}} Flag Subscription
                                 </div>
                                 <div class="col-xs-3 text-right pull-right">
-                                    $40.00
+                                    ${{vm.data.cost}}.00
                                 </div>
                             </div>
                             <div class="row" ng-show="vm.data.values.donate">
@@ -86,7 +86,7 @@
                             <input type="hidden" name="business" value="troop581az@gmail.com">
                             <input type="hidden" name="lc" value="US">
                             <input type="hidden" name="item_name" value="{{vm.data.values.name}}, {{vm.data.values.address}} - {{vm.getDescription()}}">
-                            <input type="hidden" name="amount" value="{{vm.getAmount()}}">
+                            <input type="hidden" name="amount" value="{{vm.getTotal()}}">
                             <input type="hidden" name="currency_code" value="USD">
                             <input type="hidden" name="no_note" value="0">
                             <input type="hidden" name="cn" value="Add any special instructions here:">
@@ -101,6 +101,11 @@
                             </button>
                             <div class="text-center"><i class="fa fa-3x fa-cc-paypal"></i> <i class="fa fa-3x fa-cc-amex"></i> <i class="fa fa-3x fa-cc-discover"></i> <i class="fa fa-3x fa-cc-mastercard"></i> <i class="fa fa-3x fa-cc-visa"></i></div>
                         </form>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5>Or pay by check/cash. Please make checks out to BSA Troop 581. Checks can be mailed to 632 E Desert Ln, Gilbert, AZ 85234</h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
