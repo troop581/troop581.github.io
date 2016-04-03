@@ -1,14 +1,31 @@
-﻿app.controller('requirements', ['dataService', '$q', function (data, $q) {
+﻿app.controller('requirements', ['dataService', '$q', '$modal', function (data, $q, $modal) {
     'use strict';
     var vm = this;
     vm.data = data;
-    vm.meritBadges = {}
     vm.meritBadgeUrl = 'meritbadge.org/wiki/index.php/Merit_Badges';
 
-    vm.meritBadgeList = [];
+    vm.showRequirements = function (badge) {
+        var modalInstance = $modal.open({
+            templateUrl: 'app/modules/requirements.show.html',
+            controller: 'requirements.show as vm',
+            size: 'lg',
+            resolve: {
+                badge: function () {
+                    return badge;
+                }
+            }
+
+        });
+
+        modalInstance.result.then(function () {
+        }, function () {
+
+        });
+    };
 
     function getMeritBadges() {
-        return data.getWebpage(url, 'ol').then(function (ol) {
+        data.processingRequirements = true;
+        return data.getWebpage(vm.meritBadgeUrl, 'ol', 'json').then(function (ol) {
             var list;
             ol = _.castArray(ol);
             _.forEach(ol, function (ol) {
@@ -19,29 +36,29 @@
             });
             _.forEach(list, function (li) {
                 if (_.has(li, 'a.content')) {
-                    vm.meritBadges[li.a.content] = {
+                    data.meritBadges[li.a.content] = {
                         name: li.a.content,
                         url: 'meritbadge.org' + _.get(li, 'a.href'),
-                        encodedName: _.replace(_.get(li, 'a.href'), '/wiki/index.php/', '')
+                        encodedName: _.replace(_.get(li, 'a.href'), '/wiki/index.php/', ''),
+                        type: 'Merit Badge'
+                    }
+                } else if (_.has(li, 'i.b.a.content')) {
+                    data.meritBadges[li.i.b.a.content] = {
+                        name: li.i.b.a.content,
+                        url: 'meritbadge.org' + _.get(li, 'i.b.a.href'),
+                        encodedName: _.replace(_.get(li, 'i.b.a.href'), '/wiki/index.php/', ''),
+                        type: 'Merit Badge',
+                        required: true
                     }
                 }
             });
-            return $q.all(_.map(vm.meritBadges, function (badge) {
+            return $q.all(_.map(data.meritBadges, function (badge) {
                 return $q.all({
-                    requirements: data.getWebpage(badge.url, 'table').then(function (table) {
-                        var listTable;
-                        table = _.castArray(table);
-                        _.forEach(table, function (table) {
-                            if (_.has(table, 'tbody.tr.td.a.name') && _.includes(_.get(table, 'tbody.tr.td.a.name'), 'merit_badge_requirements')) {
-                                listTable = table;
-                                return false;
-                            }
-                        });
-                        if (listTable) {
-                            vm.meritBadges[badge.name].requirements = listTable;
-                        }
+                    requirements: data.getWebpage(badge.url, 'table', 'xml').then(function (document) {
+                        var table = $(document).find('table').has('.mw-headline');
+                        data.meritBadges[badge.name].requirements = $(document).find('table').has('.mw-headline');
                     }),
-                    image: data.getWebpage(badge.url, 'img').then(function (img) {
+                    image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {
                         var mbImg;
                         img = _.castArray(img);
                         _.forEach(img, function (img) {
@@ -51,16 +68,24 @@
                             }
                         });
                         if (mbImg) {
-                            vm.meritBadges[badge.name].imgUrl = mbImg.src;
+                            data.meritBadges[badge.name].imgUrl = '//meritbadge.org' + mbImg.src;
                         }
                     })
+                }).then(function (r) {
+                    data.meritBadges[badge.name].ready = true;
                 });
-            }));
+            })).then(function (r) {
+                data.requirementsRetrieved = true;
+            });
+        }).finally(function (r) {
+            data.processingRequirements = false;
         });
     }
 
     (function init() {
-        getMeritBadges();
+        if (!data.requirementsRetrieved && !data.processingRequirements) {
+            getMeritBadges();
+        }
     })();
 
     return vm;

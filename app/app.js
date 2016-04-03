@@ -10,6 +10,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
     $httpProvider.defaults.withCredentials = true;
 
     $routeProvider.when('/flags', {
+        title: 'Flags',
         templateUrl: 'app/modules/flags.html',
         resolve: {
             dataService: function (dataService) {
@@ -18,6 +19,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
         }
     })
     .when('/flyer', {
+        title: 'Flyer',
         templateUrl: 'app/modules/flyer.html',
         resolve: {
             dataService: function (dataService) {
@@ -26,6 +28,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
         }
     })
     .when('/success', {
+        title: 'Thank you',
         templateUrl: 'app/modules/success.html',
         resolve: {
             dataService: function (dataService) {
@@ -34,6 +37,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
         }
     })
     .when('/calendar', {
+        title: 'Calendar',
         templateUrl: 'app/modules/calendar.html',
         resolve: {
             dataService: function (dataService) {
@@ -42,6 +46,7 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
         }
     })
     .when('/requirements', {
+        title: 'Requirements',
         templateUrl: 'app/modules/requirements.html',
         resolve: {
             dataService: function (dataService) {
@@ -52,8 +57,10 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
     .otherwise({ redirectTo: '/flags' });
 }]);
 
-app.run(['$route', function ($route) {
-
+app.run(['$route', '$rootScope', function ($route, $rootScope) {
+    $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
+        $rootScope.title = 'Troop 581 - ' + current.$$route.title;
+    });
 }]);
 
 toastr.options = {

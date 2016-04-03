@@ -113,7 +113,7 @@
                 <div class="well well-sm holidays">
                     <h3 class="title text-center">Flag Service Dates</h3>
                     <hr />
-                    <div class="holiday" ng-repeat="holiday in vm.holidays">
+                    <div class="holiday" ng-repeat="holiday in vm.data.holidays">
                         <h4 class="holiday-text">{{holiday.text}}</h4>
                         <h4 class="holiday-date"><small>{{holiday.date | momentToString:'dddd, MMMM D, YYYY'}}</small></h4>
                     </div>

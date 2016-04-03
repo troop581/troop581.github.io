@@ -8,6 +8,13 @@
     };
 }]);
 
+app.filter('objToArray', ['$filter', function ($filter) {
+    return function (obj) {
+        if (!(obj instanceof Object)) { return obj; }
+        return _.values(obj);
+    };
+}]);
+
 app.filter('porgSite', ['$filter', function ($filter) {
     return function (sites, porg) {
         var output = [];
