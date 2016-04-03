@@ -4,6 +4,8 @@
             <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
         </div>
         <br />
+        <button class="btn btn-sm btn-primary" ng-if="!vm.data.processingRequirements" ng-click="vm.refresh()">Refresh Requirements</button>
+        <br />
         <br />
         <div class="text-center center-block">
             <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name'" ng-if="badge.ready" class="badge-wrapper">

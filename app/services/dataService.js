@@ -56,7 +56,7 @@
 
 
     data.init = function () {
-        
+        data.meritBadges = JSON.parse(localStorage.getItem('meritBadges')) || {};
     };
 
     return data;

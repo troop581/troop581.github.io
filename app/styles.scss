@@ -453,6 +453,17 @@ body {
     font-size: .5em;
 }
 
+.badge-wrapper {
+     float: left; 
+     width: 8em; 
+     height: 11em;
+     img {
+         height: 6em;
+         width: 6em;
+         margin-bottom: .8em;
+     }
+}
+
 @media (min-width: 768px) {
   .logo {
     font-size: 4em;
@@ -465,16 +476,43 @@ body {
         .01em 4px 6px rgba(0,0,0,.2),
         .01em 5px 7px rgba(0,0,0,.15);
   }
+  .badge-wrapper {
+     width: 10em; 
+     height: 12em;
+     img {
+         height: 7em;
+         width: 7em;
+         margin-bottom: .9em;
+     }
+}
 }
 @media (min-width: 992px) {
   .logo {
     font-size: 5em;
   }
+  .badge-wrapper {
+     width: 12em; 
+     height: 14em;
+     img {
+         height: 8em;
+         width: 8em;
+         margin-bottom: 1em;
+     }
+}
 }
 @media (min-width: 1200px) {
   .logo {
     font-size: 6em;
   }
+  .badge-wrapper {
+     width: 14em; 
+     height: 16em;
+     img {
+         height: 9em;
+         width: 9em;
+         margin-bottom: 1.1em;
+     }
+}
 }
 
 #watermark-logo {
@@ -671,15 +709,4 @@ blockquote {
 
 .clickable {
     cursor: pointer;
-}
-
-.badge-wrapper {
-     float: left; 
-     width:12em; 
-     height:12em;
-     img {
-         height:8em;
-         width:8em;
-         margin-bottom:1em;
-     }
 }

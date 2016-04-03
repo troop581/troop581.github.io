@@ -10,10 +10,7 @@
     };
 
     $modalInstance.rendered.then(function () {
-        $('#requirements').html(badge.requirements[0].outerHTML);
-        $('#requirements table:first tr:first').remove();
-        $('#requirements table:last').remove();
-        $('#requirements table div:last').remove();
+        $('#requirements').html(badge.requirements);
         $('#requirements table').removeAttr('style');
     });
 

@@ -4,6 +4,10 @@
     vm.data = data;
     vm.meritBadgeUrl = 'meritbadge.org/wiki/index.php/Merit_Badges';
 
+    vm.refresh = function () {
+        getMeritBadges();
+    };
+
     vm.showRequirements = function (badge) {
         var modalInstance = $modal.open({
             templateUrl: 'app/modules/requirements.show.html',
@@ -25,6 +29,7 @@
 
     function getMeritBadges() {
         data.processingRequirements = true;
+        data.meritBadges = {};
         return data.getWebpage(vm.meritBadgeUrl, 'ol', 'json').then(function (ol) {
             var list;
             ol = _.castArray(ol);
@@ -56,7 +61,15 @@
                 return $q.all({
                     requirements: data.getWebpage(badge.url, 'table', 'xml').then(function (document) {
                         var table = $(document).find('table').has('.mw-headline');
-                        data.meritBadges[badge.name].requirements = $(document).find('table').has('.mw-headline');
+                        var firstTrHtml =  ($(table).find('tr:first')[0] && $(table).find('tr:first')[0].outerHTML) || '';
+                        var lastTableHtml = ($(table).find('table:last')[0] && $(table).find('table:last')[0].outerHTML) || '';
+                        var lastDivHtml = ($(table).find('div:last')[0] && $(table).find('div:last')[0].outerHTML) || '';
+
+                        var tableHtml = $(document).find('table').has('.mw-headline')[0].outerHTML;
+                        var tableHtml = _.replace(tableHtml, firstTrHtml, '');
+                        var tableHtml = _.replace(tableHtml, lastTableHtml, '');
+                        var tableHtml = _.replace(tableHtml, lastDivHtml, '');
+                        data.meritBadges[badge.name].requirements = tableHtml;
                     }),
                     image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {
                         var mbImg;
@@ -76,6 +89,7 @@
                 });
             })).then(function (r) {
                 data.requirementsRetrieved = true;
+                localStorage.setItem('meritBadges', JSON.stringify(data.meritBadges));
             });
         }).finally(function (r) {
             data.processingRequirements = false;
@@ -83,7 +97,7 @@
     }
 
     (function init() {
-        if (!data.requirementsRetrieved && !data.processingRequirements) {
+        if (!data.requirementsRetrieved && !data.processingRequirements && _.isEmpty(data.meritBadges)) {
             getMeritBadges();
         }
     })();
