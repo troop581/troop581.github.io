@@ -672,3 +672,14 @@ blockquote {
 .clickable {
     cursor: pointer;
 }
+
+.badge-wrapper {
+     float: left; 
+     width:12em; 
+     height:12em;
+     img {
+         height:8em;
+         width:8em;
+         margin-bottom:1em;
+     }
+}

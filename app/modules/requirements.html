@@ -1,13 +1,13 @@
 ﻿<div ng-controller="requirements as vm">
-    <div class="container-fluid">
+    <div class="container">
         <div ng-if="vm.data.processingRequirements" class="text-center text-primary">
             <i class="fa fa-circle-o-notch fa-spin fa-5x"></i>
         </div>
         <br />
         <br />
-        <div class="text-center">
-            <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name'" ng-if="badge.ready" style="float: left; width:150px; height:160px">
-                    <img ng-src="{{badge.imgUrl}}" class="clickable img-rounded img-responsive center-block" alt="badge.name" style="height:100px; width:100px; padding-bottom:5px;" ng-click="vm.showRequirements(badge)" />
+        <div class="text-center center-block">
+            <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name'" ng-if="badge.ready" class="badge-wrapper">
+                    <img ng-src="{{badge.imgUrl}}" class="clickable img-rounded img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
                     <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
             </span>
         </div>
