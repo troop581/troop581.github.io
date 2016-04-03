@@ -475,6 +475,10 @@ body {
       height: 9em;
       margin-bottom: 1.1em; } }
 
+@media (min-width: 1400px) {
+  .container {
+    width: 1400px; } }
+
 #watermark-logo {
   max-width: 30%;
   position: fixed;
@@ -511,8 +515,8 @@ body {
 .scout-law {
   color: #eee;
   position: fixed;
-  top: 5px;
-  right: 5px;
+  top: 15px;
+  right: 15px;
   z-index: -2;
   max-width: 350px;
   margin-top: 0; }

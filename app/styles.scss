@@ -498,17 +498,24 @@ body {
 }
 }
 @media (min-width: 1200px) {
-  .logo {
-    font-size: 6em;
-  }
-  .badge-wrapper {
-     width: 12em; 
-     height: 16em;
-     img {
-         height: 9em;
-         margin-bottom: 1.1em;
-     }
+    .logo {
+        font-size: 6em;
+    }
+    .badge-wrapper {
+        width: 12em;
+        height: 16em;
+
+        img {
+            height: 9em;
+            margin-bottom: 1.1em;
+        }
+    }
 }
+
+@media (min-width: 1400px) {
+    .container {
+        width: 1400px;
+    }
 }
 
 #watermark-logo {
@@ -557,8 +564,8 @@ body {
 .scout-law {
     color: #eee;
     position:fixed;
-    top: 5px;
-    right: 5px;
+    top: 15px;
+    right: 15px;
     z-index: -2;
     max-width: 350px;
     margin-top: 0;
