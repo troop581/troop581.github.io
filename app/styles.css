@@ -629,3 +629,9 @@ blockquote {
 .clickable {
   cursor: pointer; }
 
+#requirements li {
+  margin-bottom: 10px; }
+
+#requirements dl {
+  margin-bottom: 0; }
+

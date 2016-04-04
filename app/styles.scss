@@ -713,3 +713,12 @@ blockquote {
 .clickable {
     cursor: pointer;
 }
+
+#requirements {
+    li {
+        margin-bottom: 10px;
+    }
+    dl {
+        margin-bottom: 0;
+    }
+}
