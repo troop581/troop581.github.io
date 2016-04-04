@@ -436,6 +436,9 @@ app.controller('requirements.show', ['dataService', '$modalInstance', '$q', 'bad
     $modalInstance.rendered.then(function () {
         $('#requirements').html(badge.requirements);
         $('#requirements table').removeAttr('style');
+        $('#requirements a').replaceWith(function () {
+            return $(this)[0].innerText;
+        });
     });
 
     (function init() {
