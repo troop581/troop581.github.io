@@ -422,7 +422,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
 }]);
 
 
-app.controller('requirements.show', ['dataService', '$modalInstance', '$q', 'badge', function (data,  $modalInstance, $q, badge) {
+app.controller('requirements.show', ['dataService', '$modalInstance', '$q', 'badge', function (data, $modalInstance, $q, badge) {
     'use strict';
     var vm = this;
     vm.data = data;
@@ -442,7 +442,7 @@ app.controller('requirements.show', ['dataService', '$modalInstance', '$q', 'bad
     });
 
     (function init() {
-        
+
     })();
 
     return vm;
