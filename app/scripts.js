@@ -485,9 +485,9 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
     ];
 
     data.getWebpage = function (url, selector, format) {
-        return $http.get("https://query.yahooapis.com/v1/public/yql?q=SELECT%20*%20FROM%20data.html.cssselect%20WHERE%20url%3D'" + encodeURI(url) + "'%20AND%20css%3D'" + selector + "'&format=" + format + "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", { withCredentials: false }).then(function (r) {
+        return $http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D'" + encodeURI(url) + "'%20and%20xpath%3D'%2F%2F" + selector + "'&format=" + format + "&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", { withCredentials: false }).then(function (r) {
             if (format === 'json') {
-                return r.data.query.results.results[selector];
+                return r.data.query.results[selector];
             } else {
                 return $.parseXML(r.data);
             }
