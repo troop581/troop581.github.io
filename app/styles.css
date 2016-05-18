@@ -431,7 +431,7 @@ body {
   font-weight: 700;
   font-size: 3em;
   color: red;
-  text-shadow: .01em .01em 0 #fff, .03em .03em 0 #aaa; }
+  text-shadow: 0.01em 0.01em 0 #fff, 0.03em 0.03em 0 #aaa; }
 
 .logo small {
   font-size: .5em; }
@@ -634,4 +634,7 @@ blockquote {
 
 #requirements dl {
   margin-bottom: 0; }
+
+#requirements dd {
+  margin-left: 2em; }
 
