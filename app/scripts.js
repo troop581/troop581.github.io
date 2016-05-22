@@ -361,7 +361,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
                     data.meritBadgesTemp[badge.name].ready = true;
                     data.meritBadges[badge.name] = data.meritBadgesTemp[badge.name];
                 }, function (r) {
-                    console.log(badge + ' failed: ' + r);
+                    console.log(badge.name + ' failed: ' + r);
                     //keep going
                 });
             })).finally(function (r) {
@@ -412,7 +412,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
                 data.ranksTemp[badge.name].ready = true;
                 data.ranks[badge.name] = data.ranksTemp[badge.name];
             }, function (r) {
-                console.log(badge + ' failed: ' + r);
+                console.log(badge.name + ' failed: ' + r);
                 //keep going
             });
         })).finally(function (r) {
