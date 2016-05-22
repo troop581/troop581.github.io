@@ -10,11 +10,11 @@
                 <br />
             </div>
         </div>
-        <div class="row text-danger" ng-if="vm.data.failures.ranks.length || vm.data.failures.meritBadges.length">
+        <div class="row top-buffer alert alert-danger" ng-if="vm.data.failures.ranks.length || vm.data.failures.meritBadges.length">
             <div class="col-xs-12">
-                <div>Failures</div>
-                <div ng-repeat="failure in vm.data.failures.ranks track by $index"></div>
-                <div ng-repeat="failure in vm.data.failures.meritBadges track by $index"></div>
+                <h4><strong>Failures</strong></h4>
+                <div ng-repeat="failure in vm.data.failures.ranks track by $index">{{failure}}</div>
+                <div ng-repeat="failure in vm.data.failures.meritBadges track by $index">{{failure}}</div>
             </div>
             <br />
         </div>

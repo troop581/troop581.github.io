@@ -418,7 +418,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
                 data.ranks[badge.name] = data.ranksTemp[badge.name];
             }, function (r) {
                 console.log(badge.name + ' failed: ' + r);
-                data.failures.ranks.push(badge.name);
+                data.failures.ranks.push(badge.name + ' rank');
                 //keep going
             });
         })).finally(function (r) {
