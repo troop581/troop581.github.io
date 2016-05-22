@@ -10,7 +10,7 @@
         return $q.all({
             ranks: getRanks(),
             meritBadges: getMeritBadges()
-        }).then(function (r) {
+        }).finally(function (r) {
             data.processingRequirements = false;
         });
     };
@@ -35,7 +35,7 @@
     };
 
     function getMeritBadges() {
-        data.meritBadges = {};
+        data.meritBadgesTemp = {};
         return data.getWebpage(vm.meritBadgeUrl, 'ol', 'json').then(function (ol) {
             var list;
             ol = _.castArray(ol);
@@ -47,14 +47,14 @@
             });
             _.forEach(list, function (li) {
                 if (_.has(li, 'a.content')) {
-                    data.meritBadges[li.a.content] = {
+                    data.meritBadgesTemp[li.a.content] = {
                         name: li.a.content,
                         url: 'meritbadge.org' + _.get(li, 'a.href'),
                         encodedName: _.replace(_.get(li, 'a.href'), '/wiki/index.php/', ''),
                         type: 'Merit Badge'
                     }
                 } else if (_.has(li, 'i.b.a.content')) {
-                    data.meritBadges[li.i.b.a.content] = {
+                    data.meritBadgesTemp[li.i.b.a.content] = {
                         name: li.i.b.a.content,
                         url: 'meritbadge.org' + _.get(li, 'i.b.a.href'),
                         encodedName: _.replace(_.get(li, 'i.b.a.href'), '/wiki/index.php/', ''),
@@ -63,7 +63,7 @@
                     }
                 }
             });
-            return $q.all(_.map(data.meritBadges, function (badge) {
+            return $q.all(_.map(data.meritBadgesTemp, function (badge) {
                 return $q.all({
                     requirements: data.getWebpage(badge.url, 'table', 'xml').then(function (document) {
                         var table = $(document).find('table').has('.mw-headline');
@@ -75,7 +75,7 @@
                         var tableHtml = _.replace(tableHtml, firstTrHtml, '');
                         var tableHtml = _.replace(tableHtml, lastTableHtml, '');
                         var tableHtml = _.replace(tableHtml, lastDivHtml, '');
-                        data.meritBadges[badge.name].requirements = tableHtml;
+                        data.meritBadgesTemp[badge.name].requirements = tableHtml;
                     }),
                     image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {
                         var mbImg;
@@ -87,20 +87,24 @@
                             }
                         });
                         if (mbImg) {
-                            data.meritBadges[badge.name].imgUrl = '//meritbadge.org' + mbImg.src;
+                            data.meritBadgesTemp[badge.name].imgUrl = '//meritbadge.org' + mbImg.src;
                         }
                     })
                 }).then(function (r) {
-                    data.meritBadges[badge.name].ready = true;
+                    data.meritBadgesTemp[badge.name].ready = true;
+                    data.meritBadges[badge.name] = data.meritBadgesTemp[badge.name];
+                }, function (r) {
+                    console.log(badge + ' failed: ' + r);
+                    //keep going
                 });
-            })).then(function (r) {
+            })).finally(function (r) {
                 localStorage.setItem('meritBadges', JSON.stringify(data.meritBadges));
             });
         });
     }
 
     function getRanks() {
-        data.ranks = {
+        data.ranksTemp = {
             'Scout': { order: 1, name: 'Scout', url: 'meritbadge.org/wiki/index.php/Scout_Badge', encodedName: 'BoyScout', type: 'Rank' },
             'Tenderfoot': { order: 2, name: 'Tenderfoot', url: 'meritbadge.org/wiki/index.php/Tenderfoot_rank', encodedName: 'Tenderfoot', type: 'Rank' },
             'Second Class': { order: 3, name: 'Second Class', url: 'meritbadge.org/wiki/index.php/Second_Class_rank', encodedName: 'SecondClass', type: 'Rank' },
@@ -110,7 +114,7 @@
             'Eagle': { order: 7, name: 'Eagle', url: 'meritbadge.org/wiki/index.php/Eagle_Scout_rank', encodedName: 'EagleScout', type: 'Rank' },
             'Eagle Palms': { order: 8, name: 'Eagle Palms', url: 'meritbadge.org/wiki/index.php/Eagle_Palms', encodedName: 'Eagle_Palms', type: 'Palm' }
         };
-        return $q.all(_.map(data.ranks, function (badge) {
+        return $q.all(_.map(data.ranksTemp, function (badge) {
             return $q.all({
                 requirements: data.getWebpage(badge.url, 'table', 'xml').then(function (document) {
                     var table = $(document).find('table').has('.mw-headline');
@@ -122,7 +126,7 @@
                     var tableHtml = _.replace(tableHtml, firstTrHtml, '');
                     var tableHtml = _.replace(tableHtml, lastTableHtml, '');
                     var tableHtml = _.replace(tableHtml, lastDivHtml, '');
-                    data.ranks[badge.name].requirements = tableHtml;
+                    data.ranksTemp[badge.name].requirements = tableHtml;
                 }),
                 image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {
                     var mbImg;
@@ -134,13 +138,17 @@
                         }
                     });
                     if (mbImg) {
-                        data.ranks[badge.name].imgUrl = '//meritbadge.org' + mbImg.src;
+                        data.ranksTemp[badge.name].imgUrl = '//meritbadge.org' + mbImg.src;
                     }
                 })
             }).then(function (r) {
-                data.ranks[badge.name].ready = true;
+                data.ranksTemp[badge.name].ready = true;
+                data.ranks[badge.name] = data.ranksTemp[badge.name];
+            }, function (r) {
+                console.log(badge + ' failed: ' + r);
+                //keep going
             });
-        })).then(function (r) {
+        })).finally(function (r) {
             localStorage.setItem('ranks', JSON.stringify(data.ranks));
         });
     }
