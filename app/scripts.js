@@ -274,6 +274,10 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
 
     vm.refresh = function () {
         data.processingRequirements = true;
+        data.failures = {
+            ranks: [],
+            meritBadges: []
+        };
         return $q.all({
             ranks: getRanks(),
             meritBadges: getMeritBadges()
@@ -362,6 +366,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
                     data.meritBadges[badge.name] = data.meritBadgesTemp[badge.name];
                 }, function (r) {
                     console.log(badge.name + ' failed: ' + r);
+                    data.failures.meritBadges.push(badge.name);
                     //keep going
                 });
             })).finally(function (r) {
@@ -413,6 +418,7 @@ app.controller('requirements', ['dataService', '$q', '$modal', function (data, $
                 data.ranks[badge.name] = data.ranksTemp[badge.name];
             }, function (r) {
                 console.log(badge.name + ' failed: ' + r);
+                data.failures.ranks.push(badge.name);
                 //keep going
             });
         })).finally(function (r) {

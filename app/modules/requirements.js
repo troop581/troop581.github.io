@@ -7,6 +7,10 @@
 
     vm.refresh = function () {
         data.processingRequirements = true;
+        data.failures = {
+            ranks: [],
+            meritBadges: []
+        };
         return $q.all({
             ranks: getRanks(),
             meritBadges: getMeritBadges()
@@ -95,6 +99,7 @@
                     data.meritBadges[badge.name] = data.meritBadgesTemp[badge.name];
                 }, function (r) {
                     console.log(badge.name + ' failed: ' + r);
+                    data.failures.meritBadges.push(badge.name);
                     //keep going
                 });
             })).finally(function (r) {
@@ -146,6 +151,7 @@
                 data.ranks[badge.name] = data.ranksTemp[badge.name];
             }, function (r) {
                 console.log(badge.name + ' failed: ' + r);
+                data.failures.ranks.push(badge.name);
                 //keep going
             });
         })).finally(function (r) {
