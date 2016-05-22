@@ -13,8 +13,12 @@
         <div class="row top-buffer alert alert-danger" ng-if="vm.data.failures.ranks.length || vm.data.failures.meritBadges.length">
             <div class="col-xs-12">
                 <h4><strong>Failures</strong></h4>
-                <div ng-repeat="failure in vm.data.failures.ranks track by $index">{{failure}}</div>
-                <div ng-repeat="failure in vm.data.failures.meritBadges track by $index">{{failure}}</div>
+                <div ng-repeat="badge in vm.data.failures.ranks | objToArray | orderBy:'order' track by badge.name">{{badge.name}} Rank</div>
+                <div ng-repeat="badge in vm.data.failures.meritBadges | objToArray | orderBy:'name' track by badge.name">{{badge.name}}</div>
+                <div ng-if="!vm.data.processingRequirements">
+                    <br />
+                    <em>All others updated</em>
+                </div>
             </div>
             <br />
         </div>

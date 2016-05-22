@@ -99,7 +99,7 @@
                     data.meritBadges[badge.name] = data.meritBadgesTemp[badge.name];
                 }, function (r) {
                     console.log(badge.name + ' failed: ' + r);
-                    data.failures.meritBadges.push(badge.name);
+                    data.failures.meritBadges.push(badge);
                     //keep going
                 });
             })).finally(function (r) {
@@ -151,7 +151,7 @@
                 data.ranks[badge.name] = data.ranksTemp[badge.name];
             }, function (r) {
                 console.log(badge.name + ' failed: ' + r);
-                data.failures.ranks.push(badge.name + ' rank');
+                data.failures.ranks.push(badge);
                 //keep going
             });
         })).finally(function (r) {
