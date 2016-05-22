@@ -14,7 +14,7 @@
             <div class="col-xs-12">
                 <h3 class="text-primary">Ranks</h3>
                 <div class="text-center center-block">
-                    <span ng-repeat="badge in vm.data.ranks | objToArray | orderBy:'order' track by name" ng-if="badge.ready" class="badge-wrapper">
+                    <span ng-repeat="badge in vm.data.ranks | objToArray | orderBy:'order' track by badge.name" ng-if="badge.ready" class="badge-wrapper">
                         <img ng-src="{{badge.imgUrl}}" class="clickable img-rounded img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
                         <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
                     </span>
@@ -26,7 +26,7 @@
             <div class="col-xs-12">
                 <h3 class="text-primary">Merit Badges</h3>
                 <div class="text-center center-block">
-                    <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name' track by name" ng-if="badge.ready" class="badge-wrapper">
+                    <span ng-repeat="badge in vm.data.meritBadges | objToArray | orderBy:'name' track by badge.name" ng-if="badge.ready" class="badge-wrapper">
                         <img ng-src="{{badge.imgUrl}}" class="clickable img-circle img-responsive center-block" alt="badge.name" ng-click="vm.showRequirements(badge)" />
                         <a href="" ng-click="vm.showRequirements(badge)"><span ng-class="{bold:badge.required}">{{badge.name}}</span></a>
                     </span>
