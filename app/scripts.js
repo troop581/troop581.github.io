@@ -478,7 +478,7 @@ app.factory('dataService', ['$http', '$filter', '$q', function ($http, $filter, 
     'use strict';
 
     var data = {};
-    data.year = 2016;
+    data.year = 2017;
     data.cost = 45;
     data.meritBadges = {}
     data.values = {};
