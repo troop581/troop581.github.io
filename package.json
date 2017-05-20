@@ -1,0 +1,29 @@
+{
+  "name": "troop581.us",
+  "version": "1.0.0",
+  "description": "Troop 581, Gilbert, AZ",
+  "main": "app/app.js",
+  "scripts": {
+    "lint": "eslint app/ --ignore-pattern scripts*.js",
+    "bundleJs": "uglifyjs app/app.js app/layout/*.js app/modules/*.js app/services/*.js --output app/scripts.js -b",
+    "postbundleJs": "uglifyjs app/scripts.js --output app/scripts.min.js --source-map app/scripts.min.js.map --mangle --compress",
+    "compileCss": "node-sass app/styles.scss app/styles.min.css --source-map true --output-style compressed",
+    "build": "npm run lint && npm run bundleJs && npm run compileCss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/troop581/troop581.github.io.git"
+  },
+  "keywords": [
+    "BSA",
+    "Boy Scouts of America",
+    "Troop 581"
+  ],
+  "author": "Sean Wilson <sean.m.wilson@intel.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "node-sass": "^4.5.2",
+    "uglify-js": "^2.8.22"
+  }
+}

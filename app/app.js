@@ -36,15 +36,6 @@ app.config(['$tooltipProvider', '$routeProvider', '$httpProvider', '$locationPro
             }
         }
     })
-    .when('/calendar', {
-        title: 'Calendar',
-        templateUrl: 'app/modules/calendar.html',
-        resolve: {
-            dataService: function (dataService) {
-                return dataService.init();
-            }
-        }
-    })
     .when('/requirements', {
         title: 'Requirements',
         templateUrl: 'app/modules/requirements.html',
