@@ -17,9 +17,5 @@
         });
     });
 
-    (function init() {
-
-    })();
-
     return vm;
 }]);

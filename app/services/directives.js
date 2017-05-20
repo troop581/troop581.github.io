@@ -1,6 +1,4 @@
-﻿'use strict';
-
-app.directive('dropTarget', function ($q) {
+﻿app.directive('dropTarget', function ($q) {
     return {
         restrict: 'A',
         scope: {

@@ -7,8 +7,5 @@
         $modalInstance.close();
     };
 
-    (function init() {
-    })();
-
     return vm;
 }]);

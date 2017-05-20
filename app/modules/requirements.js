@@ -76,9 +76,9 @@
                         var lastDivHtml = ($(table).find('div:last')[0] && $(table).find('div:last')[0].outerHTML) || '';
 
                         var tableHtml = $(document).find('table').has('.mw-headline')[0].outerHTML;
-                        var tableHtml = _.replace(tableHtml, firstTrHtml, '');
-                        var tableHtml = _.replace(tableHtml, lastTableHtml, '');
-                        var tableHtml = _.replace(tableHtml, lastDivHtml, '');
+                        tableHtml = _.replace(tableHtml, firstTrHtml, '');
+                        tableHtml = _.replace(tableHtml, lastTableHtml, '');
+                        tableHtml = _.replace(tableHtml, lastDivHtml, '');
                         data.meritBadgesTemp[badge.name].requirements = tableHtml;
                     }),
                     image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {
@@ -128,9 +128,9 @@
                     var lastDivHtml = ($(table).find('div:last')[0] && $(table).find('div:last')[0].outerHTML) || '';
 
                     var tableHtml = $(document).find('table').has('.mw-headline')[0].outerHTML;
-                    var tableHtml = _.replace(tableHtml, firstTrHtml, '');
-                    var tableHtml = _.replace(tableHtml, lastTableHtml, '');
-                    var tableHtml = _.replace(tableHtml, lastDivHtml, '');
+                    tableHtml = _.replace(tableHtml, firstTrHtml, '');
+                    tableHtml = _.replace(tableHtml, lastTableHtml, '');
+                    tableHtml = _.replace(tableHtml, lastDivHtml, '');
                     data.ranksTemp[badge.name].requirements = tableHtml;
                 }),
                 image: data.getWebpage(badge.url, 'img', 'json').then(function (img) {

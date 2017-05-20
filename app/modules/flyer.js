@@ -3,10 +3,6 @@
     var vm = this;
     vm.data = data;
 
-    (function init() {
-        
-    })();
-
     return vm;
 }]);
 

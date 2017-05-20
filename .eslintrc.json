@@ -1,0 +1,19 @@
+{
+    "env": {
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+        "_": true,
+        "moment": true,
+        "toastr": true,
+        "angular": true,
+        "$route": true,
+        "app": true,
+        "$": true
+    },
+    "rules": {
+        "no-unused-vars": ["off"],
+        "no-console": [0]
+    }
+}
