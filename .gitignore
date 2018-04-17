@@ -1,3 +1,10 @@
 node_modules
 
 # compiled/built files
+app/styles.min.css
+app/styles.min.css.map
+app/ag-intel.min.css
+app/ag-intel.min.css.map
+app/scripts.js
+app/scripts.min.js
+app/scripts.min.js.map
