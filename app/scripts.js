@@ -429,7 +429,7 @@ app.controller("success", [ "dataService", "$q", "$modal", "$timeout", "$filter"
 app.factory("dataService", [ "$http", "$filter", "$q", function($http, $filter, $q) {
     "use strict";
     var data = {};
-    data.year = 2017;
+    data.year = 2018;
     data.cost = 45;
     data.meritBadges = {};
     data.values = {};
