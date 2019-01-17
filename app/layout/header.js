@@ -1,9 +1,9 @@
 ﻿app.controller('header', ['$location', 'dataService', function ($location, data) {
-    'use strict';
-    var vm = this;
+  'use strict';
+  var vm = this;
 
-    vm.data = data;
-    vm.location = $location;
+  vm.data = data;
+  vm.location = $location;
 
-    return vm;
+  return vm;
 }]);

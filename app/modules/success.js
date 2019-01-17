@@ -1,8 +1,7 @@
 ﻿app.controller('success', ['dataService', '$q', '$modal', '$timeout', '$filter', function (data, $q, $modal, $timeout, $filter) {
-    'use strict';
-    var vm = this;
-    vm.data = data;
+  'use strict';
+  var vm = this;
+  vm.data = data;
 
-    return vm;
+  return vm;
 }]);
-
