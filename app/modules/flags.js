@@ -93,6 +93,9 @@
 
   (function init() {
     data.values = JSON.parse(localStorage.getItem('flags.values')) || {};
+    if (data.disabled){
+      data.values = {};
+    }
   })();
 
   return vm;
