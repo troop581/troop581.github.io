@@ -203,7 +203,7 @@ app.factory("dataService", [ "$http", "$filter", "$q", function($http, $filter, 
     "use strict";
     var data = {};
     data.disabled = true;
-    data.year = 2018;
+    data.year = 2019;
     data.cost = 45;
     data.values = {};
     var JANUARY = 0, FEBRUARY = 1, MARCH = 2, APRIL = 3, MAY = 4, JUNE = 5, JULY = 6, AUGUST = 7, SEPTEMBER = 8, OCTOBER = 9, NOVEMBER = 10, DECEMBER = 11, SUNDAY = 0, MONDAY = 1, TUESDAY = 2, WEDNESDAY = 3, THURSDAY = 4, FRIDAY = 5, SATURDAY = 6, FIRST = 1, SECOND = 2, THIRD = 3, FOURTH = 4, LAST = -1;
