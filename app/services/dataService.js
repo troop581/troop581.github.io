@@ -2,7 +2,7 @@
   'use strict';
 
   var data = {};
-  data.disabled = false;
+  data.disabled = true;
   data.year = 2019;
   data.cost = 45;
   data.values = {};
