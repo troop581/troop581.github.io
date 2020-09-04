@@ -23,7 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "uglify-js": "^3.5.12"
   }
 }
