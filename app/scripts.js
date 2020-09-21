@@ -1,8 +1,8 @@
 "use strict";
 
-var app = angular.module("app", [ "ngRoute", "ngSanitize", "ui.bootstrap" ]);
+app = angular.module("app", [ "ngRoute", "ngSanitize", "ui.bootstrap" ]);
 
-app.config([ "$tooltipProvider", "$routeProvider", "$httpProvider", "$locationProvider", function($tooltipProvider, $routeProvider, $httpProvider, $locationProvider) {
+app.config([ "$tooltipProvider", "$routeProvider", "$httpProvider", function($tooltipProvider, $routeProvider, $httpProvider) {
     $tooltipProvider.options({
         popupDelay: 500
     });
