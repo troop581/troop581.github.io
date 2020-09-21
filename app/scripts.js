@@ -1,8 +1,8 @@
 "use strict";
 
-app = angular.module("app", [ "ngRoute", "ngSanitize", "ui.bootstrap" ]);
+var myApp = angular.module("app", [ "ngRoute", "ngSanitize", "ui.bootstrap" ]);
 
-app.config([ "$tooltipProvider", "$routeProvider", "$httpProvider", function($tooltipProvider, $routeProvider, $httpProvider) {
+myApp.config([ "$tooltipProvider", "$routeProvider", "$httpProvider", function($tooltipProvider, $routeProvider, $httpProvider) {
     $tooltipProvider.options({
         popupDelay: 500
     });
@@ -36,7 +36,7 @@ app.config([ "$tooltipProvider", "$routeProvider", "$httpProvider", function($to
     });
 } ]);
 
-app.run([ "$route", "$rootScope", function($route, $rootScope) {
+myApp.run([ "$route", "$rootScope", function($route, $rootScope) {
     $rootScope.$on("$routeChangeSuccess", function(event, current, previous) {
         $rootScope.title = "Troop 581 - " + current.$$route.title;
     });
