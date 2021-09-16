@@ -1,15 +1,7 @@
 {
   "name": "troop581.us",
-  "version": "2020.0.0",
+  "version": "2021.0.0",
   "description": "Troop 581, Gilbert, AZ",
-  "main": "app/app.js",
-  "scripts": {
-    "lint": "eslint app/ --ignore-pattern scripts*.js",
-    "bundleJs": "uglifyjs app/app.js app/layout/*.js app/modules/*.js app/services/*.js -o app/scripts.js -b",
-    "postbundleJs": "uglifyjs app/scripts.js -o app/scripts.min.js --source-map -o app/scripts.min.js --mangle --compress",
-    "compileCss": "node-sass app/styles.scss app/styles.min.css --source-map true --output-style compressed",
-    "build": "npm run lint && npm run bundleJs && npm run compileCss"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/troop581/troop581.github.io.git"
@@ -20,10 +12,5 @@
     "Troop 581"
   ],
   "author": "Sean Wilson <sean.m.wilson@intel.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^7.9.0",
-    "node-sass": "^4.12.0",
-    "uglify-js": "^3.5.12"
-  }
+  "license": "MIT"
 }
